@@ -12,6 +12,6 @@ class RegistroMesasController extends Controller
         $this->serviceRegistroMesas = $serviceRegistroMesas;
     }
     public function store(RegistroMesasRequest $request){
-        return $this->serviceRegistroMesas->registrarMesa($request->validated());
+        return $this->serviceRegistroMesas->store($request->validated());
     }
 }

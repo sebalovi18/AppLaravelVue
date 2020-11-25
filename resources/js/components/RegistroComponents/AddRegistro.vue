@@ -50,13 +50,13 @@
       <!---------------------------------------------->
       <!-- Lista de clientes de la mesa -->
       <b-col cols="12">
-        <h5 class="text-center text-uppercase text-light" v-if="registro.clientes.length>0">
+        <h5 class="text-center text-uppercase text-light" v-if="clientes.length>0">
           Clientes de la mesa
         </h5>
         <div class="d-flex justify-content-center flex-wrap my-2 border-top border-bottom border-light">
           <b-badge pill 
             variant="dark" 
-            v-for="cliente in registro.clientes" 
+            v-for="cliente in clientes" 
             :key="cliente.id"
             class="m-1 d-flex justify-content-center align-items-center"
             >
@@ -101,6 +101,7 @@ export default {
         dia: "",
         clientes:[]
       },
+      clientes : [],
       toastConfig:{
         error:{
           title:'',
@@ -129,9 +130,10 @@ export default {
       this.$bvToast.toast(message,config);
     },
     addClient(client){
-      const flag = this.registro.clientes.includes(client);
+      const flag = this.registro.clientes.includes(client.id);
       if(!flag){
-        this.registro.clientes.push(client);
+        this.registro.clientes.push(client.id);
+        this.clientes.push(client);
         this.$v.registro.clientes.$touch();
         this.showToast(`Cliente ${client.nombre} ${client.apellido} agregado` , 'Operacion exitosa' , this.toastConfig.success);
         return
@@ -139,12 +141,13 @@ export default {
       this.showToast(`El cliente ${client.nombre} ${client.apellido} ya esta en la mesa de reserva` , 'Error' , this.toastConfig.error)
     },
     removeClient(client){
-      const index = this.registro.clientes.indexOf(client);
+      const index = this.registro.clientes.indexOf(client.id);
       if(index === -1){
         showToast('Cliente no encontrado' , 'Error' , this.toastConfig.error);
         return
       }
       this.registro.clientes.splice(index,1);
+      this.clientes.splice(index,1);
       this.showToast(`El cliente ${client.nombre} ${client.apellido} se ha quitado de la lista` , 'Operacion exitosa!' , this.toastConfig.success);
     },
     formatDate(date) {
@@ -209,31 +212,7 @@ export default {
         required,
         minLength:minLength(1),
         $each:{
-          nombre:{
-            required,
-            minLength:minLength(2),
-            maxLength:maxLength(100)
-          },
-          apellido:{
-            required,
-            minLength:minLength(2),
-            maxLength:maxLength(100)
-          },
-          dni:{
-            required,
-            minLength:minLength(8),
-            maxLength:maxLength(8)
-          },
-          domicilio:{
-            required,
-            minLength:minLength(2),
-            maxLength:maxLength(100)
-          },
-          telefono:{
-            required,
-            minLength:minLength(2),
-            maxLength:maxLength(100)
-          }
+          minValue:minValue(1)
         }
       }
     }

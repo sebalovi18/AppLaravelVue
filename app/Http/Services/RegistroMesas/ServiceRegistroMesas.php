@@ -12,12 +12,13 @@ class ServiceRegistroMesas
         $this->registroModel = $registroModel;
         $this->serviceCliente = $serviceCliente;
     }
-    public function registrarMesa($validated)
+    public function store($validated)
     {
-        return $validated['clientes'];
-        $fullTime =  $validated['dia'] . ' ' . $validated['horario'];
+        $fullTime =  $validated['dia'] . ' ' . $validated['horario']; //Buscar alternativa a esto
         $this->registroModel->n_mesa = $validated['numMesa'];
         $this->registroModel->fecha = $fullTime;
         $this->registroModel->save();
+        $this->registroModel->all()->last()->clientes()->attach($validated['clientes']);
+        return $this->registroModel->all();
     }
 }
