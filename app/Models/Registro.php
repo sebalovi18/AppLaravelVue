@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Registro extends Model
 {
     use SoftDeletes;
+
+    protected $fillable = ['n_mesa,fecha'];
+
+    public function clientes()
+    {
+        return $this->belongsToMany(Cliente::class)->withTimestamps();
+    }
 }

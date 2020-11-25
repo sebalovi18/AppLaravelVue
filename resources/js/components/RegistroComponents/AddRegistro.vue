@@ -97,18 +97,9 @@ export default {
     return {
       registro: {
         numMesa: 1,
-        horario: "00:00:00",
-        dia: "12/11/2020",
-        clientes:[
-          {
-            id: 1,
-            nombre: "Houston",
-            apellido: "Ullrich",
-            dni: "38422885",
-            telefono: "3364618442",
-            domicilio: "168 Padberg Mountain Suite 341\nNorth Celiaberg, KS 04842",
-          }
-        ]
+        horario: "",
+        dia: "",
+        clientes:[]
       },
       toastConfig:{
         error:{
@@ -158,7 +149,7 @@ export default {
     },
     formatDate(date) {
       if (date instanceof Date) {
-        this.registro.dia = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        this.registro.dia = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
         this.$v.registro.dia.$touch();
         return
       }

@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Http\Services\Clientes\ServiceClientesCrud;
+use App\Http\Services\RegistroMesas\ServiceRegistroMesas;
+use App\Models\Registro;
 use Illuminate\Support\ServiceProvider;
 
 class RegistroMesasProvider extends ServiceProvider
@@ -13,7 +16,9 @@ class RegistroMesasProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(ServiceRegistroMesas::class , function($app){
+            return new ServiceRegistroMesas($app->make(ServiceClientesCrud::class) , $app->make(Registro::class));
+        });
     }
 
     /**
