@@ -1,12 +1,16 @@
 <template>
   <b-col class="m-0 p-0 bg-dark">
     <div class="border-top border-light">
-    <b-button v-for="(v,i) of components" :key="i" variant="outline-light" squared @click='changeComponents(v)'>
-      {{v}}
-    </b-button>
-    <keep-alive>
-      <component :is="currentComponent"></component>
-    </keep-alive>
+      <b-row>
+        <b-col cols="12" md="6" class="m-0 p-0 bg-dark" v-for="(v,i) of components" :key="i">
+          <b-button variant="outline-light" block @click='changeComponents(v)'>
+            {{v}}
+          </b-button>
+        </b-col>
+      </b-row>
+      <keep-alive>
+        <component :is="currentComponent"></component>
+      </keep-alive>
     </div>
   </b-col>
 </template>

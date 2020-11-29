@@ -35,5 +35,5 @@ Route::delete('clientes/{id}','ClienteController@destroy');
 
 /* Registro de Mesas Api */
 Route::post('registro' , 'RegistroMesasController@store');
-Route::get('registro' , 'RegistroMesasController@store');
+Route::get('registro' , 'RegistroMesasController@getAllRegistrosMesasJson');
 

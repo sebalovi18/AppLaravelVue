@@ -9,19 +9,25 @@ const RegistrosMesasModule = {
             return state.registros;
         }
     },
-    mutations:{
-        setRegistro(state , registro){
-            state.registros.push(registro);
-        }
-    },
     actions:{
+        async getAllRegistrosMesasDb({state}){
+            await axios.get(`${window.location.origin}/api/registro`)
+            .then(res=>{
+                state.registros = res.data;
+            })
+            .catch(err=>{
+                state.registros = [];
+                state.error = err.data;
+            })
+        },
         async setRegistroDb({state},registro){
             await axios.post(`${window.location.origin}/api/registro`,registro)
             .then(res=>{
-                console.log(res);
+                state.registros = res.data;
             })
             .catch(err=>{
-                state.error = err.data
+                state.registros = [];
+                state.error = err.data;
             })
         }
     }

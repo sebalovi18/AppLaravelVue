@@ -16,7 +16,7 @@ class RegistroMesasProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ServiceRegistroMesas::class , function($app){
+        $this->app->singleton(ServiceRegistroMesas::class , function($app){
             return new ServiceRegistroMesas($app->make(ServiceClientesCrud::class) , $app->make(Registro::class));
         });
     }

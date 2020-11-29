@@ -11,6 +11,10 @@ class RegistroMesasController extends Controller
     {
         $this->serviceRegistroMesas = $serviceRegistroMesas;
     }
+    public function getAllRegistrosMesasJson()
+    {
+        return $this->serviceRegistroMesas->getAllRegistrosMesasJson();
+    }
     public function store(RegistroMesasRequest $request){
         return $this->serviceRegistroMesas->store($request->validated());
     }

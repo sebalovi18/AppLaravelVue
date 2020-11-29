@@ -2,6 +2,7 @@
 
 namespace App\Http\Services\RegistroMesas;
 
+use App\Http\Resources\RegistroMesasResource;
 use App\Http\Services\Clientes\ServiceClientesCrud;
 use App\Models\Registro;
 
@@ -19,6 +20,12 @@ class ServiceRegistroMesas
         $this->registroModel->fecha = $fullTime;
         $this->registroModel->save();
         $this->registroModel->all()->last()->clientes()->attach($validated['clientes']);
-        return $this->registroModel->all();
+        return RegistroMesasResource::collection($this->registroModel->has('clientes')->get());
+        //return RegistroMesasResource::collection($this->registroModel->all());
+        //return $this->registroModel->all();
+    }
+    public function getAllRegistrosMesasJson()
+    {
+        return RegistroMesasResource::collection($this->registroModel->has('clientes')->get());
     }
 }

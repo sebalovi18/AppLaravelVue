@@ -1,6 +1,6 @@
 <template>
 <b-col class="m-0 p-0">
-  <b-form class="mb-2 p-3 bg-warning" @submit.prevent="registrar">
+  <b-form class="mb-2 p-3 bg-info" @submit.prevent="registrar">
     <h3 class="text-center mb-3 border-bottom border-dark">Registrar/Reservar Mesa</h3>
     <b-row class="my-4">
       <!-- Input numero de Mesa -->
@@ -69,7 +69,7 @@
       <!-- Botton de Registrar -->
       <b-col cols="12" class="mb-3">
         <div>
-          <b-button block variant="primary" type="submit">Registrar</b-button>
+          <b-button block variant="outline-light" type="submit">Registrar</b-button>
         </div>
       </b-col>
       <!---------------------------------------------->
@@ -181,7 +181,6 @@ export default {
     registrar(){
       if(!this.$v.registro.$invalid){
         this.showToast('Se ha registrado correctamente', 'Operacion exitosa' , this.toastConfig.success);
-        this.setRegistro(this.registro);
         this.setRegistroDb(this.registro);
         //setTimeout(()=>this.$router.go(),3000);
         return
@@ -189,7 +188,6 @@ export default {
       this.showToast('Los datos del formulario son incorrectos', 'Error' , this.toastConfig.error );
     },
     ...mapActions('RegistrosMesasModule',["setRegistroDb"]),
-    ...mapMutations("RegistrosMesasModule", ["setRegistro"]),
   },
   validations:{
     registro:{
