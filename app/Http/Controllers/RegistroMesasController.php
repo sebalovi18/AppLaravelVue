@@ -18,4 +18,7 @@ class RegistroMesasController extends Controller
     public function store(RegistroMesasRequest $request){
         return $this->serviceRegistroMesas->store($request->validated());
     }
+    public function deleteRegistroMesa($id){
+        return $this->serviceRegistroMesas->deleteRegistroMesa($id);
+    }
 }

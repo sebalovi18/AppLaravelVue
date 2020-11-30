@@ -7,7 +7,6 @@ const ClienteModule = {
     actions: {
         //Clientes CRUD
         async getClientes({ state }) {
-            //await axios.get("http://mesasregistrocovid19.test/api/clientes")
             await axios.get(`${window.location.origin}/api/clientes`)
             .then(res=>{state.clientes = res.data;})
             .catch(err=>console.error(`Error de Aplicacion!!! : ${err.response.data.message}`));

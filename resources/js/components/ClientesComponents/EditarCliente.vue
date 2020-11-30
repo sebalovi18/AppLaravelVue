@@ -43,12 +43,12 @@ export default {
     hideModal(id) {
       this.$refs[id].hide();
     },
-    async editar(index) {
+    editar(index) {
       if (this.properties.$invalid) {
         console.log("Datos del formulario invalidos!");
         return;
       }
-      await this.updateCliente(this.properties.form.$model);
+      this.updateCliente(this.properties.form.$model);
       this.hideModal(index);
     },
     ...mapActions('ClienteModule',["updateCliente"]),

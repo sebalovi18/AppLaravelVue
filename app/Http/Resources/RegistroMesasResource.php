@@ -15,8 +15,10 @@ class RegistroMesasResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id'=>$this->id,
             'numMesa'=>$this->n_mesa,
-            'fecha'=>$this->fecha,
+            'fecha'=>date('Y/m/d' , strtotime($this->fecha)),
+            'horario'=>date('H:i:m' , strtotime($this->fecha)),
             'clientes'=>ClientesResource::collection($this->clientes)
         ];
     }

@@ -1,30 +1,82 @@
 <template>
   <div>
-      <b-card v-for="(registro,index) in getRegistros.data" :key="index" header-bg-variant="dark" header-text-variant="light">
-          <template v-slot:header>
-              <h3 class="text-center">Mesa {{registro.numMesa}}</h3>
-          </template>
-          <b-card-sub-title class="text-center border-bottom border-dark">Fecha : {{registro.fecha}}</b-card-sub-title>
-          <b-card-body class="m-0 p-0">
-              <b-table :items="registro.clientes" :fields="fields" small striped bordered hover>
-              </b-table>
-          </b-card-body>
-      </b-card>
+    <b-table
+    striped
+    hover
+    :items="getRegistros.data"
+    :fields="fields"
+    dark
+    >  
+      <template #cell(detalles)="row">
+        <b-button size="sm" block variant="light" @click="row.toggleDetails" class="mr-2">
+          {{ row.detailsShowing ? 'Ocultar' : 'Mostrar'}} detalles
+        </b-button>
+      </template>
+      <template #row-details="row">
+          <b-table
+          hover
+          head-variant="light"
+          table-variant="info"
+          :items = row.item.clientes
+          class="rounded"
+          >
+          </b-table>
+          <b-row>
+          <b-col cols="6">
+            <EditarRegistro />
+          </b-col>
+          <b-col cols="6">
+            <b-button block variant="danger" @click="borrarRegistro(row.item.id)">Borrar Registro</b-button>
+          </b-col>
+          </b-row>
+      </template>
+    </b-table>
   </div>
 </template>
 <script>
 import {mapGetters,mapActions} from 'vuex';
+import EditarRegistro from '../RegistroComponents/EditarRegistro';
 export default {
   data() {
     return {
-      fields: ["nombre", "apellido", "dni", "domicilio", "telefono"],
+      fields : [
+        {
+          key : 'numMesa',
+          label : 'Nº Mesa',
+          sortable : true
+        },
+        {
+          key : 'fecha',
+          label : "Fecha",
+          formatter:value=>{ 
+            let d = new Date(value).toLocaleDateString();
+            d = d.split('/').map(v=>v < 10 ? `0${v}` : v);
+            return d.join('/');
+          },
+          sortable:true
+        },
+        {
+          key : 'horario',
+          label : "Horario",
+          sortable : true
+        },
+        "detalles"
+      ],
     };
   },
   computed:{
     ...mapGetters('RegistrosMesasModule',['getRegistros'])
   },
   methods:{
-    ...mapActions('RegistrosMesasModule' , ['getAllRegistrosMesasDb'])
+    borrarRegistro(registro){
+      if(window.confirm('Desea borrar este registro?')){
+        this.borrarRegistroDb(registro);
+      }
+    },
+    ...mapActions('RegistrosMesasModule' , ['getAllRegistrosMesasDb','borrarRegistroDb'])
+  },
+  components:{
+    EditarRegistro
   },
   mounted(){
     this.getAllRegistrosMesasDb();

@@ -1,13 +1,14 @@
 <template>
 <b-col class="m-0 p-0">
-  <b-form class="mb-2 p-3 bg-info" @submit.prevent="registrar">
-    <h3 class="text-center mb-3 border-bottom border-dark">Registrar/Reservar Mesa</h3>
+  <b-form class="mb-2 p-3 bg-dark" @submit.prevent="registrar">
+    <h3 class="text-center text-light mb-3 border-bottom border-light">Registrar/Reservar Mesa</h3>
     <b-row class="my-4">
       <!-- Input numero de Mesa -->
       <b-col cols="12" md="4">
         <b-form-group
         label="Numero de Mesa"
         label-for="numeroDeMesa"
+        class="text-light"
         >
           <b-form-input 
           id="numeroDeMesa"
@@ -27,8 +28,12 @@
         <b-form-group
         label="Horario"
         label-for="horarioMesa"
+        class="text-light"
         >
-          <b-form-timepicker v-model="$v.registro.horario.$model" :state="checkHorario($v.registro.horario)" id="horarioMesa">
+          <b-form-timepicker id="horarioMesa"
+          minutes-step="10"
+          v-model="horario"
+          >
           </b-form-timepicker>
         </b-form-group>
       </b-col>
@@ -38,12 +43,12 @@
         <b-form-group
         label="Fecha"
         label-for="fechaDeMesa"
+        class="text-light"
         >
           <b-form-datepicker 
           id="fechaDeMesa"
-          value-as-date
-          :state="checkDia($v.registro.dia)"
-          @input="formatDate($event)">
+          v-model="fecha"
+          >
           </b-form-datepicker>
         </b-form-group>
       </b-col>
@@ -55,13 +60,13 @@
         </h5>
         <div class="d-flex justify-content-center flex-wrap my-2 border-top border-bottom border-light">
           <b-badge pill 
-            variant="dark" 
+            variant="light" 
             v-for="cliente in clientes" 
             :key="cliente.id"
             class="m-1 d-flex justify-content-center align-items-center"
             >
               {{cliente.nombre}} {{cliente.apellido}}
-              <b-button size="sm" variant="dark" pill @click="removeClient(cliente)"><b-icon-x-circle-fill variant="danger"></b-icon-x-circle-fill></b-button>
+              <b-button size="sm" variant="light" pill @click="removeClient(cliente)"><b-icon-x-circle-fill variant="danger"></b-icon-x-circle-fill></b-button>
           </b-badge>
         </div>
       </b-col>
@@ -69,7 +74,7 @@
       <!-- Botton de Registrar -->
       <b-col cols="12" class="mb-3">
         <div>
-          <b-button block variant="outline-light" type="submit">Registrar</b-button>
+          <b-button block variant="light" type="submit">Registrar</b-button>
         </div>
       </b-col>
       <!---------------------------------------------->
@@ -97,10 +102,11 @@ export default {
     return {
       registro: {
         numMesa: 1,
-        horario: "",
-        dia: "",
-        clientes:[]
+        fecha_horario:null,
+        clientes:[],
       },
+      fecha:null,
+      horario:null,
       clientes : [],
       toastConfig:{
         error:{
@@ -150,14 +156,6 @@ export default {
       this.clientes.splice(index,1);
       this.showToast(`El cliente ${client.nombre} ${client.apellido} se ha quitado de la lista` , 'Operacion exitosa!' , this.toastConfig.success);
     },
-    formatDate(date) {
-      if (date instanceof Date) {
-        this.registro.dia = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
-        this.$v.registro.dia.$touch();
-        return
-      }
-      return null;
-    },
     checkNumMesa(field){
       if(typeof field.$model === 'number'){
         if(!field.$dirty){
@@ -166,28 +164,16 @@ export default {
         return field.$model >= 1 && field.$model <100 ? true : false
       }
     },
-    checkHorario(field){
-      if(typeof field.$model === 'string'){
-        if(!field.$dirty) return null;
-        return field.$model.length === 8 ? true : false
-      }
-    },
-    checkDia(field){
-      if(typeof field.$model === 'string'){
-        if(!field.$dirty) return null;
-        return field.$model.length >= 8 && field.$model.length <=10 ? true : false
-      }
-    },
     registrar(){
       if(!this.$v.registro.$invalid){
         this.showToast('Se ha registrado correctamente', 'Operacion exitosa' , this.toastConfig.success);
-        this.setRegistroDb(this.registro);
+        this.setNuevoRegistroDb(this.registro);
         //setTimeout(()=>this.$router.go(),3000);
         return
       };
       this.showToast('Los datos del formulario son incorrectos', 'Error' , this.toastConfig.error );
     },
-    ...mapActions('RegistrosMesasModule',["setRegistroDb"]),
+    ...mapActions('RegistrosMesasModule',["setNuevoRegistroDb"]),
   },
   validations:{
     registro:{
@@ -196,15 +182,10 @@ export default {
         minValue:minValue(1),
         maxValue:maxValue(99),
       },
-      horario:{
+      fecha_horario:{
         required,
-        minLength:minLength(8),
-        maxLength:maxLength(8),
-      },
-      dia:{
-        required,
-        minLength:minLength(8),
-        maxLength:maxLength(10),
+        minLength:minLength(19),
+        maxLength:maxLength(19)
       },
       clientes:{
         required,
@@ -215,5 +196,11 @@ export default {
       }
     }
   },
+  updated(){
+    if(this.fecha !== null && this.horario !== null){  
+      this.registro.fecha_horario = this.fecha.concat(' ',this.horario)
+      console.log(this.registro.fecha_horario.length);
+    }
+  }
 };
 </script>

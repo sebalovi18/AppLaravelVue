@@ -24,9 +24,8 @@ class RegistroMesasRequest extends FormRequest
     public function rules()
     {
         return [
-            "numMesa"=>'required|numeric|min:1|max:99',
-            "horario"=>'required|string|size:8',
-            "dia"=>'required|string|min:8|max:10',
+            'numMesa'=>'required|numeric|min:1|max:99',
+            'fecha_horario'=>'required|date',
             'clientes.*' => 'required|numeric|min:1',
         ];
     }

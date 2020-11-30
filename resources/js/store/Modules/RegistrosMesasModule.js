@@ -20,8 +20,18 @@ const RegistrosMesasModule = {
                 state.error = err.data;
             })
         },
-        async setRegistroDb({state},registro){
+        async setNuevoRegistroDb({state},registro){
             await axios.post(`${window.location.origin}/api/registro`,registro)
+            .then(res=>{
+                state.registros = res.data;
+            })
+            .catch(err=>{
+                state.registros = [];
+                state.error = err.data;
+            })
+        },
+        async borrarRegistroDb({state},registro){
+            await axios.delete(`${window.location.origin}/api/registro/${registro}`)
             .then(res=>{
                 state.registros = res.data;
             })

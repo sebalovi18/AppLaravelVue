@@ -1,7 +1,7 @@
 <template>
   <b-col class="m-0 p-0 bg-dark">
     <div class="border-top border-light">
-      <b-row>
+      <b-row class="m-0 p-0">
         <b-col cols="12" md="6" class="m-0 p-0 bg-dark" v-for="(v,i) of components" :key="i">
           <b-button variant="outline-light" block @click='changeComponents(v)'>
             {{v}}
@@ -20,7 +20,7 @@ import addregistro from '../components/RegistroComponents/AddRegistro';
 export default {
   data(){
     return{
-      currentComponent : 'addregistro',
+      currentComponent : 'tablaregistros',
       components:['Agregar Registros' , 'Ver Registros']
     }
   },

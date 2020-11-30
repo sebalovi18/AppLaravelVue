@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cliente_Registro extends Model
 {
+    //A modo de prueba este model
     use SoftDeletes;
     protected $table="cliente_registro";
 }
