@@ -23,7 +23,7 @@
           </b-table>
           <b-row>
           <b-col cols="6">
-            <EditarRegistro />
+            <b-button block variant="primary">Editar Registro</b-button>
           </b-col>
           <b-col cols="6">
             <b-button block variant="danger" @click="borrarRegistro(row.item.id)">Borrar Registro</b-button>
@@ -35,8 +35,12 @@
 </template>
 <script>
 import {mapGetters,mapActions} from 'vuex';
+import Date_Esp from '../../Mixins/Date_Esp';
 import EditarRegistro from '../RegistroComponents/EditarRegistro';
 export default {
+  mixins:[
+    Date_Esp
+    ],
   data() {
     return {
       fields : [
@@ -49,9 +53,10 @@ export default {
           key : 'fecha',
           label : "Fecha",
           formatter:value=>{ 
-            let d = new Date(value).toLocaleDateString();
-            d = d.split('/').map(v=>v < 10 ? `0${v}` : v);
-            return d.join('/');
+            let d = new Date(value);
+            let dia = d.getDay();
+            let fecha_completa = d.toLocaleDateString().split('/').map(v=>v < 10 ? `0${v}` : v).join('/');
+            return `${this.dias[dia].toUpperCase()} - ${fecha_completa}`;
           },
           sortable:true
         },

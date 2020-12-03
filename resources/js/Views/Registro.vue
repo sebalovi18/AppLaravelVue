@@ -1,47 +1,22 @@
 <template>
   <b-col class="m-0 p-0 bg-dark">
-    <div class="border-top border-light">
-      <b-row class="m-0 p-0">
-        <b-col cols="12" md="6" class="m-0 p-0 bg-dark" v-for="(v,i) of components" :key="i">
-          <b-button variant="outline-light" block @click='changeComponents(v)'>
-            {{v}}
-          </b-button>
-        </b-col>
-      </b-row>
-      <keep-alive>
-        <component :is="currentComponent"></component>
-      </keep-alive>
-    </div>
+    <b-button variant="danger" block>Nuevo registro</b-button>
+    <TablaRegistros />
   </b-col>
 </template>
 <script>
-import tablaregistros from '../components/RegistroComponents/TablaRegistros';
-import addregistro from '../components/RegistroComponents/AddRegistro';
+import AgregarRegistro from '../components/RegistroComponents/AgregarRegistro';
+import TablaRegistros from '../components/RegistroComponents/TablaRegistros';
 export default {
   data(){
-    return{
-      currentComponent : 'tablaregistros',
-      components:['Agregar Registros' , 'Ver Registros']
+    return {
     }
   },
   components:{
-    tablaregistros,
-    addregistro,
+    AgregarRegistro,
+    TablaRegistros
   },
   methods:{
-    changeComponents(component){
-      switch(component){
-        case 'Agregar Registros':
-          this.currentComponent = 'addregistro'
-          break;
-        case 'Ver Registros':
-          this.currentComponent = 'tablaregistros'
-          break;
-        default:
-          this.currentComponent = 'addregistro';
-          break
-      }
-    }
   }
 };
 </script>
