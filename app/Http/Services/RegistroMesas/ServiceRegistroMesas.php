@@ -13,6 +13,10 @@ class ServiceRegistroMesas
         $this->registroModel = $registroModel;
         $this->serviceCliente = $serviceCliente;
     }
+    public function getAllRegistrosMesasJson()
+    {
+        return RegistroMesasResource::collection($this->registroModel->has('clientes')->orderBy('fecha' , 'desc')->get());
+    }
     public function store($validated)
     {
         $this->registroModel->n_mesa = $validated['numMesa'];
@@ -24,9 +28,14 @@ class ServiceRegistroMesas
                             ->attach($validated['clientes']);
         return $this->getAllRegistrosMesasJson();
     }
-    public function getAllRegistrosMesasJson()
+    public function updateRegistroMesa($id , $validated)
     {
-        return RegistroMesasResource::collection($this->registroModel->has('clientes')->orderBy('fecha' , 'desc')->get());
+        $registro = $this->registroModel->findOrFail($id);
+        $registro->n_mesa = $validated['numMesa'];
+        $registro->fecha = $validated['fecha_horario'];
+        $registro->save();
+        $registro->clientes()->sync($validated['clientes']);
+        return $this->getAllRegistrosMesasJson();
     }
     public function deleteRegistroMesa($id)
     {

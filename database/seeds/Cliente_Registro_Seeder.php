@@ -12,6 +12,6 @@ class Cliente_Registro_Seeder extends Seeder
      */
     public function run()
     {
-        factory(Cliente_Registro::class,30)->create();
+        factory(Cliente_Registro::class,50)->create();
     }
 }

@@ -26,6 +26,7 @@ export default {
         }
         this.setNuevoRegistroDb(this.propiedades.registro.$model);
         this.showToast("Se ha registrado correctamente" , "Registro exitoso" , this.toastConfig.success);
+        setTimeout(()=>this.$router.go(),1500);
       },
       ...mapActions("RegistrosMesasModule", ["setNuevoRegistroDb"]),
     },

@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Cliente_Registro::class, function (Faker $faker) {
     return [
-        'cliente_id'=>$faker->numberBetween($min=1,$max=30),
-        'registro_id'=>$faker->numberBetween($min=1,$max=15)
+        'cliente_id'=>$faker->numberBetween($min=1,$max=500),
+        'registro_id'=>$faker->numberBetween($min=1,$max=300)
     ];
 });

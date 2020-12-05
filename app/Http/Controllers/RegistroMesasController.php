@@ -15,10 +15,16 @@ class RegistroMesasController extends Controller
     {
         return $this->serviceRegistroMesas->getAllRegistrosMesasJson();
     }
-    public function store(RegistroMesasRequest $request){
+    public function storeRegistroMesa(RegistroMesasRequest $request)
+    {
         return $this->serviceRegistroMesas->store($request->validated());
     }
-    public function deleteRegistroMesa($id){
+    public function updateRegistroMesa($id ,RegistroMesasRequest $request)
+    {  
+        return $this->serviceRegistroMesas->updateRegistroMesa($id , $request->validated());
+    }
+    public function deleteRegistroMesa($id)
+    {
         return $this->serviceRegistroMesas->deleteRegistroMesa($id);
     }
 }

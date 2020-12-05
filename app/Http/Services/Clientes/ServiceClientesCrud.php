@@ -2,6 +2,7 @@
 
 namespace App\Http\Services\Clientes;
 
+use App\Http\Resources\ClientesResource;
 use App\Models\Cliente;
 
 class ServiceClientesCrud
@@ -16,7 +17,8 @@ class ServiceClientesCrud
     }
     public function getAllClientesJson()
     {
-        return json_encode($this->cliente->all());
+        //return json_encode($this->cliente->all());
+        return ClientesResource::collection($this->cliente->all());
     }
     public function getCliente(int $id){
         return $this->cliente->find($id);

@@ -2,7 +2,7 @@
   <b-col class="m-0 p-0">
     <b-form class="mb-2 p-3 bg-dark" @submit.prevent="registrar">
       <h3 class="text-center text-light mb-3 border-bottom border-light">
-        Registrar reserva de mesa
+        <slot name="titulo">Registrar reserva de mesa</slot>
       </h3>
       <b-row class="my-4">
         <!-- Input numero de Mesa -->
@@ -121,16 +121,30 @@ import {
 } from "vuelidate/lib/validators";
 import TablaClientes from "../ClientesComponents/TablaClientes";
 export default {
+  props: {
+    propRegistro: {
+      type: Object,
+      default: function () {
+        return {
+          registro: {
+            id : null,
+            clientes : [],
+            numMesa: null,
+            fecha_horario: null,
+          },
+          fecha: null,
+          horario: null,
+          clientes: [],
+        };
+      },
+    },
+  },
   data() {
     return {
-      registro: {
-        numMesa: null,
-        fecha_horario: null,
-        clientes: [],
-      },
-      fecha: null,
-      horario: null,
-      clientes: [],
+      registro: this.propRegistro.registro,
+      fecha: this.propRegistro.fecha,
+      horario: this.propRegistro.horario,
+      clientes: this.propRegistro.clientes,
       toastConfig: {
         error: {
           title: "",
@@ -152,11 +166,32 @@ export default {
       config.title = title;
       this.$bvToast.toast(message, config);
     },
+    /*
     addClient(client) {
       const flag = this.registro.clientes.includes(client.id);
       if (!flag) {
         this.registro.clientes.push(client.id);
         this.clientes.push(client);
+        this.$v.registro.clientes.$touch();
+        this.showToast(
+          `Cliente ${client.nombre} ${client.apellido} agregado`,
+          "Operacion exitosa",
+          this.toastConfig.success
+        );
+        return;
+      }
+      this.showToast(
+        `El cliente ${client.nombre} ${client.apellido} ya esta en la mesa de reserva`,
+        "Error",
+        this.toastConfig.error
+      );
+    },
+    */
+    addClient(client) {
+      const flag = this.registro.clientes.includes(client.id);
+      if (!flag) {
+        this.clientes.push(client);
+        this.setRegistroClientes();
         this.$v.registro.clientes.$touch();
         this.showToast(
           `Cliente ${client.nombre} ${client.apellido} agregado`,
@@ -177,8 +212,8 @@ export default {
         showToast("Cliente no encontrado", "Error", this.toastConfig.error);
         return;
       }
-      this.registro.clientes.splice(index, 1);
       this.clientes.splice(index, 1);
+      this.setRegistroClientes();
       this.showToast(
         `El cliente ${client.nombre} ${client.apellido} se ha quitado de la lista`,
         "Operacion exitosa!",
@@ -220,12 +255,18 @@ export default {
       }
       return;
     },
+    setRegistroClientes(){
+      this.registro.clientes = this.clientes.map(v=>v.id);
+    }
   },
   mounted() {
+    this.setFechaHorario();
+    this.setRegistroClientes();
     this.$emit("getRegistroData", this.$v);
   },
   updated() {
     this.setFechaHorario();
+    this.setRegistroClientes()
     this.$emit("getRegistroData", this.$v);
   },
   components: {
