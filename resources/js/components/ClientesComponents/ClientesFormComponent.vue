@@ -9,6 +9,11 @@
     <b-form-group label="Dni del cliente" label-for="dniCliente">
       <b-form-input id="dniCliente" name="dni" v-model="$v.form.dni.$model" :state="checkErrors($v.form.dni)"></b-form-input>
     </b-form-group>
+    <b-form-group label="Fecha de nacimiento" label-for="fnacimiento">
+      <b-form-datepicker id="fnacimiento" name="fnacimiento" v-model="$v.form.fnacimiento.$model" :state="checkErrors($v.form.fnacimiento)"
+      hide-header block size="sm" placeholder="Seleccione fecha de nacimiento" show-decade-nav
+      ></b-form-datepicker>
+    </b-form-group>
     <b-form-group label="Domicilio del cliente" label-for="domicilioCliente">
       <b-form-input id="domicilioCliente" name="domicilio" v-model="$v.form.domicilio.$model" :state="checkErrors($v.form.domicilio)"></b-form-input>
     </b-form-group>
@@ -33,6 +38,7 @@ export default {
           nombre:'',
           apellido:'',
           dni:'',
+          fnacimiento:'',
           domicilio:'',
           telefono:''
         };
@@ -46,6 +52,7 @@ export default {
         nombre: this.cliente.nombre,
         apellido: this.cliente.apellido,
         dni: this.cliente.dni,
+        fnacimiento: this.cliente.fnacimiento,
         domicilio: this.cliente.domicilio,
         telefono: this.cliente.telefono,
       },
@@ -81,6 +88,11 @@ export default {
         required,
         minLength:minLength(8),
         maxLength:maxLength(8)
+      },
+      fnacimiento:{
+        required,
+        minLength:minLength(10),
+        maxLength:maxLength(10),
       },
       domicilio:{
         required,

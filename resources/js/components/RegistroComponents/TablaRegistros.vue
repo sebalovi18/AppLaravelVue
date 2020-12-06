@@ -7,6 +7,8 @@
       :fields="fields"
       :tbody-tr-class="checkDate"
       dark
+      small
+      responsive
     >
       <template #cell(dia)="row">
         {{ getDayName(row.item.fecha) }}
@@ -28,6 +30,7 @@
           head-variant="light"
           table-variant="info"
           :items="row.item.clientes"
+          :fields="fieldsClientes"
           class="rounded"
         >
         </b-table>
@@ -85,11 +88,46 @@ export default {
         },
         "detalles",
       ],
+      fieldsClientes:[
+        {
+          key : 'nombre',
+          label : "Nombre",
+          sortable : true
+        },
+        {
+          key : 'apellido',
+          label : 'Apellido',
+          sortable : true
+        },
+        {
+          key : 'fnacimiento',
+          label : 'Fecha de nacimiento',
+          formatter: (val) => {
+            let d = new Date(val);
+            let fecha_completa = d
+              .toLocaleDateString()
+              .split('/')
+              .map(v=>v<10?`0${v}`:v)
+              .join('/')
+            return fecha_completa;
+          },
+          sortable : true,
+        },
+        {
+          key : 'telefono',
+          label : 'Telefono',
+          sortable : true
+        }
+
+      ],
       classesTable: {
         proximo: ["bg-warning", "text-dark"],
-        hoy: ["bg-success", "text-light"],
+        
+        hoy: ["bg-success", "text-light","rounded-circle"],
         mesActual: ["bg-info", "text-light"],
-        antiguo: ["bg-danger", "text-light"],
+        
+        pasado:["bg-danger","text-light"],
+        antiguo: ["bg-dark", "text-light"],
       },
     };
   },
@@ -103,19 +141,29 @@ export default {
       let mes_actual = now.getMonth() + 1;
       let ano_actual = now.getFullYear();
       let dia_actual = now.getDate();
+      let hora_actual = now.getHours();
+      let minutos_actual = now.getMinutes();
+
       //Fechas del registro
-      let fecha_registro = new Date(item.fecha);
+      let fecha_registro = new Date(`${item.fecha} ${item.horario}`);
       let mes_r = fecha_registro.getMonth() + 1;
       let ano_r = fecha_registro.getFullYear();
       let dia_r = fecha_registro.getDate();
+      let hora_r = fecha_registro.getHours();
+      let minutos_r = fecha_registro.getMinutes();
       //
-
       if (ano_actual === ano_r) {
         if (mes_actual == mes_r) {
           if (dia_actual < dia_r) {
             return this.classesTable.proximo;
           }
           if (dia_actual == dia_r) {
+            if(hora_actual > hora_r){
+              return this.classesTable.pasado;
+            }
+            if(hora_actual == hora_r && minutos_actual > minutos_r){
+              return this.classesTable.pasado;
+            }
             return this.classesTable.hoy;
           }
           if (dia_actual > dia_r) {

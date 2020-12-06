@@ -3,15 +3,13 @@
 namespace App\Http\Services\RegistroMesas;
 
 use App\Http\Resources\RegistroMesasResource;
-use App\Http\Services\Clientes\ServiceClientesCrud;
 use App\Models\Registro;
 
 class ServiceRegistroMesas
 {
-    public function __construct(ServiceClientesCrud $serviceCliente , Registro $registroModel)
+    public function __construct(Registro $registroModel)
     {
         $this->registroModel = $registroModel;
-        $this->serviceCliente = $serviceCliente;
     }
     public function getAllRegistrosMesasJson()
     {

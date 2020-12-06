@@ -27,6 +27,7 @@ class ClienteRequest extends FormRequest
             'nombre' => 'required|min:2|max:100',
             'apellido' => 'required|min:2|max:100',
             'dni' => 'required|min:2|max:100',
+            'fnacimiento'=>'required|date',
             'domicilio' => 'required|min:2|max:100',
             'telefono' => 'required|min:2|max:100'
         ];

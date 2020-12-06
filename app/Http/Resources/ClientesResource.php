@@ -19,6 +19,7 @@ class ClientesResource extends JsonResource
             'nombre'=>$this->nombre,
             'apellido'=>$this->apellido,
             'dni'=>$this->dni,
+            'fnacimiento'=>date('Y-m-d' , strtotime($this->fnacimiento)),
             'telefono'=>$this->telefono,
             'domicilio'=>$this->domicilio
         ];

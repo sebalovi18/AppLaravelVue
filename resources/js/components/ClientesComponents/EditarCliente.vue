@@ -5,8 +5,8 @@
     <b-modal :ref="prop_cliente.index" hide-footer centered>
       <template v-slot:modal-title>Edicion de Clientes</template>
       <ClientesFormComponent
-        :cliente="prop_cliente.item"
         @getData="properties = $event"
+        :cliente="prop_cliente.item"
       >
         <template #default>
           <b-button variant="danger" class="ml-1" @click="hideModal(prop_cliente.index)"

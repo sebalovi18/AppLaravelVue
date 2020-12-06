@@ -17,7 +17,6 @@ class ServiceClientesCrud
     }
     public function getAllClientesJson()
     {
-        //return json_encode($this->cliente->all());
         return ClientesResource::collection($this->cliente->all());
     }
     public function getCliente(int $id){
