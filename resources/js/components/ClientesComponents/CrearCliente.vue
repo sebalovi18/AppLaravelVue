@@ -16,7 +16,11 @@
 <script>
 import {mapActions} from 'vuex';
 import ClientesFormComponent from './ClientesFormComponent';
+import TOAST from '../../Mixins/Toast';
 export default {
+    mixins:[
+        TOAST
+    ],
     data(){
         return{
             properties:null
@@ -25,12 +29,12 @@ export default {
     methods: {
         crear(){
             if(this.properties.$invalid){
-                alert("Datos de formulario incorrectos!");
-                console.log("Datos de formulario incorrectos!");
+                this.showToast("Datos de formulario incorrectos!" , "Operacion invalida" , this.toastConfig.error);
                 return;
             } 
             this.createCliente(this.properties.form.$model);
             this.$bvModal.hide('crearCliente');
+            this.showToast("Cliente registrado" , "Operacion Exitosa" , this.toastConfig.success);
         },
         ...mapActions('ClienteModule',['createCliente'])
     },

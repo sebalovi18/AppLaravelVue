@@ -120,7 +120,9 @@ import {
   maxValue,
 } from "vuelidate/lib/validators";
 import TablaClientes from "../ClientesComponents/TablaClientes";
+import TOAST from '../../Mixins/Toast';
 export default {
+  mixins:[TOAST],
   props: {
     propRegistro: {
       type: Object,
@@ -162,31 +164,6 @@ export default {
     };
   },
   methods: {
-    showToast(message, title, config) {
-      config.title = title;
-      this.$bvToast.toast(message, config);
-    },
-    /*
-    addClient(client) {
-      const flag = this.registro.clientes.includes(client.id);
-      if (!flag) {
-        this.registro.clientes.push(client.id);
-        this.clientes.push(client);
-        this.$v.registro.clientes.$touch();
-        this.showToast(
-          `Cliente ${client.nombre} ${client.apellido} agregado`,
-          "Operacion exitosa",
-          this.toastConfig.success
-        );
-        return;
-      }
-      this.showToast(
-        `El cliente ${client.nombre} ${client.apellido} ya esta en la mesa de reserva`,
-        "Error",
-        this.toastConfig.error
-      );
-    },
-    */
     addClient(client) {
       const flag = this.registro.clientes.includes(client.id);
       if (!flag) {

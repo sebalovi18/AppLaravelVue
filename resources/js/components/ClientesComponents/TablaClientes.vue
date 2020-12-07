@@ -22,6 +22,7 @@
       head-variant="light"
       responsive="md"
       class="m-0 p-0"
+      small
     >
       <template v-slot:cell(Indice)="data">
         {{ data.index + 1 }}
@@ -56,7 +57,11 @@
 import { mapState, mapActions } from "vuex";
 import ClientesFormComponent from "./ClientesFormComponent";
 import EditarCliente from "../ClientesComponents/EditarCliente";
+import TOAST from "../../Mixins/Toast";
 export default {
+  mixins:[
+    TOAST
+  ],
   props: {
     perpage: {
       type: Number,
@@ -87,7 +92,8 @@ export default {
           key: "fnacimiento",
           label: "Fecha de nacimiento",
           formatter: (val) => {
-            let d = new Date(val);
+            let formatVal = val.split('-').join('/');
+            let d = new Date(formatVal);
             let fecha_completa = d
               .toLocaleDateString()
               .split('/')
@@ -129,12 +135,13 @@ export default {
     ...mapState("ClienteModule", ["clientes"]),
   },
   methods: {
-    async borrar(cliente) {
+    borrar(cliente) {
       let query = window.confirm(
-        `Desea a ${cliente.nombre} ${cliente.apellido} de su lista de clientes?`
+        `Desea eliminar a ${cliente.nombre} ${cliente.apellido} de su lista de clientes?`
       );
       if (query) {
-        await this.deleteCliente(cliente);
+        this.deleteCliente(cliente);
+        this.showToast(`El cliente ${cliente.nombre} ${cliente.apellido} fue eliminado` , "Operacion exitosa" , this.toastConfig.success);
       }
     },
     ...mapActions("ClienteModule", ["deleteCliente", "getClientes"]),

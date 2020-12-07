@@ -1,7 +1,9 @@
 <template>
   <div class="d-inline">
     <!------- Accion editar (Separar en otro componente) ------->
-    <b-button @click="showModal(prop_cliente.index)" variant="primary"><b-icon-pencil-fill variant="light"></b-icon-pencil-fill></b-button>
+    <b-button @click="showModal(prop_cliente.index)" variant="primary"
+      ><b-icon-pencil-fill variant="light"></b-icon-pencil-fill
+    ></b-button>
     <b-modal :ref="prop_cliente.index" hide-footer centered>
       <template v-slot:modal-title>Edicion de Clientes</template>
       <ClientesFormComponent
@@ -9,10 +11,16 @@
         :cliente="prop_cliente.item"
       >
         <template #default>
-          <b-button variant="danger" class="ml-1" @click="hideModal(prop_cliente.index)"
+          <b-button
+            variant="danger"
+            class="ml-1"
+            @click="hideModal(prop_cliente.index)"
             >Cancelar</b-button
           >
-          <b-button variant="primary" class="ml-1" @click="editar(prop_cliente.index)"
+          <b-button
+            variant="primary"
+            class="ml-1"
+            @click="editar(prop_cliente.index)"
             >Editar</b-button
           >
         </template>
@@ -22,19 +30,23 @@
   <!---------------------------------------------------------->
 </template>
 <script>
-import {mapActions} from 'vuex';
-import ClientesFormComponent from './ClientesFormComponent';
+import { mapActions } from "vuex";
+import ClientesFormComponent from "./ClientesFormComponent";
+import TOAST from "../../Mixins/Toast";
 export default {
-  props:{
-      prop_cliente:{
-          type:Object,
-          default:function(){return {}}
-      }
+  mixins: [TOAST],
+  props: {
+    prop_cliente: {
+      type: Object,
+      default: function () {
+        return {};
+      },
+    },
   },
-  data(){
-      return {
-        properties:null
-      }
+  data() {
+    return {
+      properties: null,
+    };
   },
   methods: {
     showModal(id) {
@@ -45,16 +57,17 @@ export default {
     },
     editar(index) {
       if (this.properties.$invalid) {
-        console.log("Datos del formulario invalidos!");
+        this.showToast("Datos del formulario invalidos" , "Operacion invalida", this.toastConfig.error);
         return;
       }
       this.updateCliente(this.properties.form.$model);
       this.hideModal(index);
+      this.showToast("Edicion realizada" , "Operacion exitosa" , this.toastConfig.success);
     },
-    ...mapActions('ClienteModule',["updateCliente"]),
+    ...mapActions("ClienteModule", ["updateCliente"]),
   },
-  components:{
-    ClientesFormComponent
-  }
+  components: {
+    ClientesFormComponent,
+  },
 };
 </script>

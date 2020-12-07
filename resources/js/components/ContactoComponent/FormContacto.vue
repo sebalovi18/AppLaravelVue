@@ -63,7 +63,11 @@
 <script>
 /* Separar esta logica . Esta a modo de prueba */
 import {required,minLength,maxLength,email} from "vuelidate/lib/validators";
+import TOAST from '../../Mixins/Toast';
 export default {
+  mixins:[
+    TOAST
+  ],
   data() {
     return {
       contacto: {
@@ -82,7 +86,7 @@ export default {
     enviar(evt) {
       evt.preventDefault();
       if (this.$v.$invalid) {
-        alert("Los datos ingresados son incorrectos!");
+        this.showToast("Los datos ingresados son incorrectos" ,"Operacion invalida" , this.toastConfig.error);
         return;
       }
       axios.post(`${window.location.origin}/api/contacto`,this.contacto)

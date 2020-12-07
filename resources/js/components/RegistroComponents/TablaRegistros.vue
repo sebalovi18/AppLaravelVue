@@ -103,7 +103,8 @@ export default {
           key : 'fnacimiento',
           label : 'Fecha de nacimiento',
           formatter: (val) => {
-            let d = new Date(val);
+            let formatVal = val.split('-').join('/');
+            let d = new Date(formatVal);
             let fecha_completa = d
               .toLocaleDateString()
               .split('/')
