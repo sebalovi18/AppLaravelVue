@@ -38,12 +38,12 @@ class ServiceClientesCrud
 
     private $prueba_cliente = [
         'nombre'=>'Sebastian',
-        'apellido'=>"Lovisolo",
-        'dni'=>'35114737',
+        'apellido'=>"Sadaorasa",
+        'dni'=>'15651546',
         'fnacimiento'=>'1990/04/26',
-        'domicilio'=>'necochea 81',
+        'domicilio'=>'asdlkasdlaskdj',
         'telefono'=>'3364310167',
-        'email'=>'sebalovi12@gmail.com'
+        'email'=>'sebasadaorasa12@gmail.com'
     ];
 
     private $validator;
