@@ -118,6 +118,10 @@ export default {
           key : 'telefono',
           label : 'Telefono',
           sortable : true
+        },
+        {
+          key : 'email',
+          sortable : true
         }
 
       ],

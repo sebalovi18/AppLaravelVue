@@ -1,6 +1,9 @@
 <?php
 
-use App\Models\Cliente;
+use App\Http\Services\Clientes\ServiceClientesCrud;
+use App\Http\Services\Emails\ServiceEnvioMails;
+use App\Mail\Contacto;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,3 +42,5 @@ Route::post('registro' , 'RegistroMesasController@storeRegistroMesa');
 Route::put('registro/{id}' , 'RegistroMesasController@updateRegistroMesa');
 Route::delete('registro/{id}' , 'RegistroMesasController@deleteRegistroMesa');
 
+//////////////////////////////////////////////////////////////////////////////////////////
+Route::get('prueba' , 'ClienteController@prueba');

@@ -21,7 +21,8 @@ class ClientesResource extends JsonResource
             'dni'=>$this->dni,
             'fnacimiento'=>date('Y-m-d' , strtotime($this->fnacimiento)),
             'telefono'=>$this->telefono,
-            'domicilio'=>$this->domicilio
+            'domicilio'=>$this->domicilio,
+            'email'=>$this->email
         ];
     }
 }

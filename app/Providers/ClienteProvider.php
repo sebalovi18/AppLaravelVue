@@ -16,7 +16,7 @@ class ClienteProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(ServiceClientesCrud::class,function($app){
-            return new ServiceClientesCrud(new Cliente);
+            return new ServiceClientesCrud($app->make(Cliente::class));
         });
     }
 

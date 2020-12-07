@@ -1,12 +1,12 @@
 <template>
   <b-form>
-    <b-form-group label="Nombre del cliente" label-for="nombreCliente">
+    <b-form-group label="Nombre" label-for="nombreCliente">
       <b-form-input id="nombreCliente" name="nombre" v-model="$v.form.nombre.$model" :state="checkErrors($v.form.nombre)"></b-form-input>
     </b-form-group>
-    <b-form-group label="Apellido del cliente" label-for="apellidoCliente">
+    <b-form-group label="Apellido" label-for="apellidoCliente">
       <b-form-input id="apellidoCliente" name="apellido" v-model="$v.form.apellido.$model" :state="checkErrors($v.form.apellido)"></b-form-input>
     </b-form-group>
-    <b-form-group label="Dni del cliente" label-for="dniCliente">
+    <b-form-group label="Dni" label-for="dniCliente">
       <b-form-input id="dniCliente" name="dni" v-model="$v.form.dni.$model" :state="checkErrors($v.form.dni)"></b-form-input>
     </b-form-group>
     <b-form-group label="Fecha de nacimiento" label-for="fnacimiento">
@@ -14,11 +14,14 @@
       hide-header block size="sm" placeholder="Seleccione fecha de nacimiento" show-decade-nav
       ></b-form-datepicker>
     </b-form-group>
-    <b-form-group label="Domicilio del cliente" label-for="domicilioCliente">
+    <b-form-group label="Domicilio" label-for="domicilioCliente">
       <b-form-input id="domicilioCliente" name="domicilio" v-model="$v.form.domicilio.$model" :state="checkErrors($v.form.domicilio)"></b-form-input>
     </b-form-group>
-    <b-form-group label="Telefono del cliente" label-for="telefonoCliente">
+    <b-form-group label="Telefono" label-for="telefonoCliente">
       <b-form-input id="telefonoCliente" name="telefono" v-model="$v.form.telefono.$model" :state="checkErrors($v.form.telefono)"></b-form-input>
+    </b-form-group>
+    <b-form-group label="Email" label-for="telefonoCliente">
+      <b-form-input id="emailcliente" name="email" v-model="$v.form.email.$model" :state="checkErrors($v.form.email)"></b-form-input>
     </b-form-group>
     <template>
       <div class="d-flex justify-content-end">
@@ -28,7 +31,7 @@
   </b-form>
 </template>
 <script>
-import {required,minLength,maxLength} from "vuelidate/lib/validators";
+import {required,minLength,maxLength,email} from "vuelidate/lib/validators";
 export default {
   props: {
     cliente: {
@@ -40,7 +43,8 @@ export default {
           dni:'',
           fnacimiento:'',
           domicilio:'',
-          telefono:''
+          telefono:'',
+          email:''
         };
       },
     },
@@ -55,6 +59,7 @@ export default {
         fnacimiento: this.cliente.fnacimiento,
         domicilio: this.cliente.domicilio,
         telefono: this.cliente.telefono,
+        email:this.cliente.email
       },
     };
   },
@@ -103,7 +108,11 @@ export default {
         required,
         minLength:minLength(2),
         maxLength:maxLength(100)
-      }
+      },
+      email:{
+        required,
+        email,
+      },
     }
   }
 

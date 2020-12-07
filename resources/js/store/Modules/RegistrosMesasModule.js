@@ -36,7 +36,6 @@ const RegistrosMesasModule = {
             await axios
                 .put(`${window.location.origin}/api/registro/${registro.id}` , registro)
                 .then(res => {
-                    console.log(res);
                     state.registros = res.data;
                 })
                 .catch(err => {

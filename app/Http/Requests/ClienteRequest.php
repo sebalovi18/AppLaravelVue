@@ -29,7 +29,8 @@ class ClienteRequest extends FormRequest
             'dni' => 'required|min:2|max:100',
             'fnacimiento'=>'required|date',
             'domicilio' => 'required|min:2|max:100',
-            'telefono' => 'required|min:2|max:100'
+            'telefono' => 'required|min:2|max:100',
+            'email'=>'required|email'
         ];
     }
 }

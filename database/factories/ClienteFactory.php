@@ -13,5 +13,6 @@ $factory->define(Cliente::class, function (Faker $faker) {
         'fnacimiento'=>$faker->date($format = 'Y-m-d'),
         'telefono'=>$faker->numberBetween($min=3364000000,$max="3364999999"),
         'domicilio'=>$faker->address(),
+        'email'=>'sebalovi12@gmail.com'
     ];
 });

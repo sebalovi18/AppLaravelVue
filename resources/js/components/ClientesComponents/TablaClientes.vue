@@ -114,6 +114,11 @@ export default {
           sortable: false,
           _showDetails: true,
         },
+        {
+          key: "email",
+          sortable:true,
+          _showDetails:true
+        },
         "Acciones",
       ],
       filter: "",

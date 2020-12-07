@@ -21,6 +21,7 @@ class CreateClientesTable extends Migration
             $table->date('fnacimiento');
             $table->string('telefono');
             $table->string('domicilio');
+            $table->string('email');
             $table->softDeletes();
             $table->timestamps();
         });

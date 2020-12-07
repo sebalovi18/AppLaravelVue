@@ -20,7 +20,7 @@ class ClienteController extends Controller
     {
         $this->cliente->storeCliente($request->validated());
         return $this->cliente->getAllClientesJson();
-    }
+    }  
     public function update(ClienteRequest $request, int $id)
     {  
         $this->cliente->updateCliente($request->validated(),$id);
@@ -32,4 +32,8 @@ class ClienteController extends Controller
         return $this->cliente->getAllClientesJson();
     }
 
+    public function prueba()
+    {
+        return dd($this->cliente->prueba());
+    }
 }
