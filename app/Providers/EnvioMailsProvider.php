@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Http\Services\Clientes\ServiceClientesCrud;
 use App\Http\Services\Emails\ServiceEnvioMails;
-use App\Mail\MailPromo;
+use App\Mail\EmailPromo;
 use Illuminate\Support\ServiceProvider;
 
 class EnvioMailsProvider extends ServiceProvider
@@ -17,7 +17,7 @@ class EnvioMailsProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(ServiceEnvioMails::class , function($app){
-            return new ServiceEnvioMails($app->make(ServiceClientesCrud::class) , $app->make(MailPromo::class));
+            return new ServiceEnvioMails($app->make(ServiceClientesCrud::class) , $app->make(EmailPromo::class));
         });
     }
 

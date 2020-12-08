@@ -2,13 +2,12 @@
 
 namespace App\Mail;
 
-use App\Http\Requests\ContactRequest;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MailPromo extends Mailable
+class EmailPromo extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -19,7 +18,7 @@ class MailPromo extends Mailable
      */
     public function __construct()
     {
-
+        //
     }
 
     /**
@@ -29,6 +28,6 @@ class MailPromo extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.promo');
+        return $this->markdown('emails.promo');
     }
 }

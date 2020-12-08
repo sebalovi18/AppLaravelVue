@@ -5,14 +5,14 @@ namespace App\Console\Commands;
 use App\Http\Services\Clientes\ServiceClientesCrud;
 use Illuminate\Console\Command;
 
-class CheckClientBirthday extends Command
+class MailBirthdayOffers extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'send:ofertas';
+    protected $signature = 'send:offers';
 
     /**
      * The console command description.
@@ -36,7 +36,7 @@ class CheckClientBirthday extends Command
      *
      * @return int
      */
-    public function handle(ServiceClientesCrud $clientes)
+    public function handle()
     {
     }
 }

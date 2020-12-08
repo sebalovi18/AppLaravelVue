@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Services\Clientes\ServiceClientesCrud;
 use App\Http\Services\Emails\ServiceEnvioMails;
-use App\Mail\Contacto;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,3 +41,6 @@ Route::delete('registro/{id}' , 'RegistroMesasController@deleteRegistroMesa');
 
 //////////////////////////////////////////////////////////////////////////////////////////
 Route::get('prueba' , 'ClienteController@prueba');
+Route::get('prueba2', function(ServiceEnvioMails $email){
+    $email->enviarPromosSemanales();
+});
