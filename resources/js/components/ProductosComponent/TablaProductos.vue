@@ -12,32 +12,56 @@
       :fields="camposProductos"
       :items="getProductos"
       :filter="filter"
+      :per-page="perPage"
+      :current-page="currentPage"
       hover
       striped
-      head-variant="dark"
+      dark
+      head-variant="light"
       responsive="md"
       class="m-0 p-0"
       small
     >
       <template v-slot:cell(Acciones)="data">
         <slot name="acciones" :data_row="data">
-          <EditarProducto :propToEdit="data.item"/>
-          <b-button variant="danger" size="sm" @click="borrarProducto(data.item)">
+          <EditarProducto :propToEdit="data.item" />
+          <b-button
+            variant="danger"
+            size="sm"
+            @click="borrarProducto(data.item)"
+          >
             <b-icon-trash-fill variant="light"></b-icon-trash-fill>
           </b-button>
         </slot>
       </template>
     </b-table>
+    <div
+      class="bg-dark m-0 p-0 border border-light d-flex align-items-center justify-content-center"
+    >
+    <b-pagination
+      v-model="currentPage"
+      :per-page="perPage"
+      :total-rows="getProductos.length"
+      small
+      class="my-3 p-0"
+    ></b-pagination>
+    </div>
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from "vuex";
-import EditarProducto from './EditarProducto';
-import TOAST from '../../Mixins/Toast';
+import { mapActions, mapGetters , mapState} from "vuex";
+import EditarProducto from "./EditarProducto";
+import TOAST from "../../Mixins/Toast";
 export default {
-  mixins:[
-    TOAST
-  ],
+  mixins: [TOAST],
+  props:{
+    perPage:{
+      type:Number,
+      default:function(){
+        return 10
+      }
+    }
+  },
   data() {
     return {
       camposProductos: [
@@ -49,7 +73,7 @@ export default {
         {
           key: "nombre",
           label: "Nombre de producto",
-          formatter:function(val){
+          formatter: function (val) {
             return val.toUpperCase();
           },
           sortable: true,
@@ -61,26 +85,31 @@ export default {
         },
         "Acciones",
       ],
-      filter:''
+      filter: "",
+      currentPage : 1,
     };
   },
-  components:{
-    EditarProducto
+  components: {
+    EditarProducto,
   },
   computed: {
     ...mapGetters("ProductosModule", ["getProductos"]),
   },
   methods: {
-    borrarProducto(producto){
+    borrarProducto(producto) {
       let flag = confirm(`Desea borrar el producto ${producto.nombre} ?`);
-      if(flag){
+      if (flag) {
         this.deleteProducto(producto);
-        this.showToast(`${producto.nombre} ha sido eliminado` , 'Operacion exitosa' , this.toastConfig.success);
+        this.showToast(
+          `${producto.nombre} ha sido eliminado`,
+          "Operacion exitosa",
+          this.toastConfig.success
+        );
       }
     },
-    ...mapActions("ProductosModule", ["getAllProductos","deleteProducto"]),
+    ...mapActions("ProductosModule", ["getAllProductos", "deleteProducto"]),
   },
-  mounted() {
+  beforeMount() {
     this.getAllProductos();
   },
 };
