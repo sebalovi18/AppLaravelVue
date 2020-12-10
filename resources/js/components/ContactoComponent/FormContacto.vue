@@ -2,7 +2,7 @@
   <b-col>
     <b-row
       class="d-flex justify-content-center align-items-center my-5"
-      @submit="enviar"
+      @submit="enviarForm"
     >
       <b-col cols="12" md="6">
         <b-form novalidate>
@@ -63,6 +63,7 @@
 <script>
 /* Separar esta logica . Esta a modo de prueba */
 import {required,minLength,maxLength,email} from "vuelidate/lib/validators";
+import { mapActions } from 'vuex';
 import TOAST from '../../Mixins/Toast';
 export default {
   mixins:[
@@ -83,20 +84,15 @@ export default {
     },
   },
   methods: {
-    enviar(evt) {
+    enviarForm(evt) {
       evt.preventDefault();
       if (this.$v.$invalid) {
         this.showToast("Los datos ingresados son incorrectos" ,"Operacion invalida" , this.toastConfig.error);
         return;
       }
-      axios.post(`${window.location.origin}/api/contacto`,this.contacto)
-      .then(res=>{
-        console.log(res)
-      })
-      .catch(err=>{
-        console.log(err.response.data)
-      })
-      this.$router.go();
+      this.automaticFormResponse(this.contacto);
+      this.showToast("Mensaje enviado" , "Operacion exitosa" , this.toastConfig.success);
+      setTimeout(()=>this.$router.go(),3000);
     },
     checkErrors(field) {
       if (field.$model.length === 0){
@@ -104,12 +100,13 @@ export default {
       }
       return field.$error ? false : true
     },
+    ...mapActions('ContactoModule', ['automaticFormResponse']),
   },
   validations: {
     contacto: {
       nombre: {
         required,
-        minLength: minLength(4),
+        minLength: minLength(2),
         maxLength: maxLength(100)
       },
       email: {

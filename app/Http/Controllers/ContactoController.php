@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ContactRequest;
-use App\Mail\Contacto;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\ContactoFormRequest;
+use App\Services\ContactoForm\ServiceContacto;
 
 class ContactoController extends Controller
 {
-    public function setMensaje(ContactRequest $request){
-        Mail::to('sebalovi12@gmail.com')->send(new Contacto($request->validated()));
+
+    public function __construct(ServiceContacto $service_contacto)
+    {
+        $this->service_contacto = $service_contacto;
+    }
+
+    public function automaticFormResponse(ContactoFormRequest $request){
+        $this->service_contacto->automaticFormResponse($request);
     }
 }

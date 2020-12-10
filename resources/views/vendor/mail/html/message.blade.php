@@ -9,9 +9,11 @@
 
     {{-- Panel --}}
     @slot('panel')
-        @component('mail::panel')
-            {{ $panel ?? ''}}
-        @endcomponent
+        @isset($panel)
+            @component('mail::panel')
+                {{ $panel ?? ''}}
+            @endcomponent
+        @endisset
     @endslot
     {{-- Footer --}}
     @slot('subcopy')

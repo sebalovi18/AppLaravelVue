@@ -25,7 +25,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('noticias' , 'NoticiasController@getNoticias');
 
 /* Contacto via email */
-Route::post('contacto' , 'ContactoController@setMensaje');
+Route::post('contacto' , 'ContactoController@automaticFormResponse');
 
 /* Clientes Api */
 Route::get('clientes','ClienteController@getAllClientes');
@@ -45,3 +45,5 @@ Route::post('productos' , 'ProductoController@store');
 Route::put('productos/{id}', 'ProductoController@update');
 Route::delete('producto/{id}', 'ProductoController@destroy');
 
+/////////////////////////////////////////////////////////////////
+Route::get('pruebas', 'ContactoController@automaticFormResponse');
