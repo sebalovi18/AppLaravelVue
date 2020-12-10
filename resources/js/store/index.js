@@ -4,6 +4,7 @@ import ClienteModule from './Modules/ClienteModule';
 import RegistrosMesasModule from './Modules/RegistrosMesasModule';
 import NoticiasModule from './Modules/NoticiasModule';
 import ContactoModule from './Modules/ContactoModule';
+import ProductosModule from './Modules/ProductosModule';
 
 Vue.use(Vuex);
 
@@ -12,7 +13,8 @@ const store = new Vuex.Store({
         ClienteModule,
         RegistrosMesasModule,
         NoticiasModule,
-        ContactoModule
+        ContactoModule,
+        ProductosModule
     }
 });
 

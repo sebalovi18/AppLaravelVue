@@ -42,7 +42,7 @@ Route::delete('registro/{id}' , 'RegistroMesasController@delete');
 Route::get('productos', 'ProductoController@getAllProductos');
 Route::post('productos' , 'ProductoController@store');
 Route::put('productos/{id}', 'ProductoController@update');
-Route::delete('producto/{id}', 'ProductoController@destroy');
+Route::delete('productos/{id}', 'ProductoController@destroy');
 
 /////////////////////////////////////////////////////////////////
 Route::get('pruebas', function(){

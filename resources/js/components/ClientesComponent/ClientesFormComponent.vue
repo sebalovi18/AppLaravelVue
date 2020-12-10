@@ -73,6 +73,7 @@ export default {
   },
   mounted(){
     this.$emit('getData',this.$v);
+    console.log(this.$v);
   },
   updated(){
     this.$emit('getData',this.$v);

@@ -26,9 +26,9 @@ class ServiceProductos
     {
         $this->producto->findOrFail($id)->update($validated);
     }
-    public function deleteProducto($id)
+    public function deleteProducto(int $id)
     {
-        $this->producto->findOfFail($id)->delete();
+        $this->producto->findOrFail($id)->delete();
     }
     /***************** MOMENTANEO BACKUP *****************/
     public function loadDefaultDb()

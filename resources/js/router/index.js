@@ -5,6 +5,7 @@ import Noticias from '../Views/Noticias.vue';
 import Clientes from '../Views/Clientes.vue';
 import Registro from '../Views/Registro.vue';
 import Contacto from '../Views/Contacto.vue';
+import Productos from '../Views/Productos.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -27,6 +28,10 @@ const routes = [
     {
         path:'/contacto',
         component: Contacto
+    },
+    {
+        path : '/productos',
+        component : Productos
     },
     {
         path:'*',

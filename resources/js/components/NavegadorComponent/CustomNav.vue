@@ -18,6 +18,7 @@
             <b-nav-item to="/">Home</b-nav-item>
             <b-nav-item to="/clientes">Clientes</b-nav-item>
             <b-nav-item to="/registro">Registro</b-nav-item>
+            <b-nav-item to="/productos">Productos</b-nav-item>
             <b-nav-item to="/noticias">Noticias</b-nav-item>
             <b-nav-item to="/contacto">Contacto</b-nav-item>
           </b-navbar-nav>
