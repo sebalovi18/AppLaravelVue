@@ -17,7 +17,7 @@ class CreateProductosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->unsignedBigInteger('precio');
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

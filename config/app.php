@@ -176,7 +176,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ClienteProvider::class,
         App\Providers\RegistroMesasProvider::class,
-        App\Providers\EnvioMailsProvider::class
+        App\Providers\EnvioMailsProvider::class,
+        App\Providers\ContactoFormProvider::class,
+        App\Providers\NoticiasProvider::class,
+        App\Providers\ProductoServiceProvider::class,
 
     ],
 

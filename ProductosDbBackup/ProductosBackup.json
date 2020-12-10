@@ -1,0 +1,335 @@
+[
+    { "nombre": "VITEL TONNE", "precio": "260", "descripcion": null },
+    {
+        "nombre": "COPA DE LANGOSTINOS Y VERDURAS ASADAS",
+        "precio": "380",
+        "descripcion": null
+    },
+    {
+        "nombre": "JAMON CRUDO CON PALMITOS O ANANA O MELON",
+        "precio": "300",
+        "descripcion": null
+    },
+    { "nombre": "RABAS", "precio": "570", "descripcion": null },
+    { "nombre": "RABAS CELIACO", "precio": "580", "descripcion": null },
+    { "nombre": "EMPANADAS DE SURUBI", "precio": "80", "descripcion": null },
+    { "nombre": "EMPANADAS DE CARNE", "precio": "80", "descripcion": null },
+    {
+        "nombre": "ALBONDIGAS DE PESCADOS CON SALSA A GUSTO",
+        "precio": "290",
+        "descripcion": null
+    },
+    {
+        "nombre": "PROVOLETA CON TOMATE ASADO",
+        "precio": "300",
+        "descripcion": null
+    },
+    {
+        "nombre": "ALITAS DE POLLO REBOZADAS CON SALSA BARBACOA",
+        "precio": "270",
+        "descripcion": null
+    },
+    {
+        "nombre": "TABLA DE CAMPO(2 pers.)",
+        "precio": "960",
+        "descripcion": null
+    },
+    {
+        "nombre": "TABLA DE CALIENTES(2 pers.)",
+        "precio": "1250",
+        "descripcion": null
+    },
+    {
+        "nombre": "TABLA DE PESCADOS(2 pers.)",
+        "precio": "1350",
+        "descripcion": null
+    },
+    {
+        "nombre": "MARUCHA DE CERDO A LA PLANCHA CON VERDURAS Y PAPAS RUSTICAS(2 pers.)",
+        "precio": "960",
+        "descripcion": null
+    },
+    {
+        "nombre": "TAPITA DE TERNERA A LA PLANCHA FILETEADA CON VERDURAS Y PAPAS RUSTICAS(2 pers.)",
+        "precio": "1180",
+        "descripcion": null
+    },
+    {
+        "nombre": "AMERICAN BURGUER (180 gr)",
+        "precio": "450",
+        "descripcion": null
+    },
+    {
+        "nombre": "BURGUER CLASIC (180 gr)",
+        "precio": "380",
+        "descripcion": null
+    },
+    { "nombre": "MEXICAN PORK", "precio": "380", "descripcion": null },
+    { "nombre": "SANDWICH DE AVE", "precio": "380", "descripcion": null },
+    {
+        "nombre": "PAPAS RUSTICAS CON CHEDDAR",
+        "precio": "240",
+        "descripcion": null
+    },
+    {
+        "nombre": "PAPAS RUSTICAS CON BARBACOA",
+        "precio": "230",
+        "descripcion": null
+    },
+    {
+        "nombre": "PAPAS RUSTICAS ESPECIALES",
+        "precio": "350",
+        "descripcion": null
+    },
+    { "nombre": "PAPA FRITAS", "precio": "200", "descripcion": null },
+    { "nombre": "PAPA HERVIDA", "precio": "110", "descripcion": null },
+    { "nombre": "PURE DE PAPAS", "precio": "180", "descripcion": null },
+    { "nombre": "PURE DE CALABAZA", "precio": "180", "descripcion": null },
+    { "nombre": "HUEVO FRITO", "precio": "60", "descripcion": null },
+    { "nombre": "MEJILLONES", "precio": "300", "descripcion": null },
+    { "nombre": "TENTACULOS", "precio": "270", "descripcion": null },
+    { "nombre": "BERENJENAS", "precio": "130", "descripcion": null },
+    { "nombre": "BOGA", "precio": "560", "descripcion": null },
+    { "nombre": "DORADO", "precio": "570", "descripcion": null },
+    { "nombre": "SURUBI", "precio": "550", "descripcion": null },
+    { "nombre": "PEJERREY", "precio": "430", "descripcion": null },
+    { "nombre": "PACU", "precio": "570", "descripcion": null },
+    { "nombre": "TRUCHA", "precio": "500", "descripcion": null },
+    { "nombre": "SALMON", "precio": "680", "descripcion": null },
+    { "nombre": "CHORIZO", "precio": "100", "descripcion": null },
+    { "nombre": "MORCILLA", "precio": "100", "descripcion": null },
+    { "nombre": "SALCHICHA PARRILLERA", "precio": "170", "descripcion": null },
+    { "nombre": "ASADO DE TIRA", "precio": "560", "descripcion": null },
+    { "nombre": "MARUCHA DE TERNERA", "precio": "560", "descripcion": null },
+    { "nombre": "ENTRANA", "precio": "560", "descripcion": null },
+    {
+        "nombre": "MARUCHA DE CERDO C/FRITAS",
+        "precio": "550",
+        "descripcion": null
+    },
+    {
+        "nombre": "PARRILLADA PARA COMPARTIR",
+        "precio": "1450",
+        "descripcion": null
+    },
+    { "nombre": "LOMO", "precio": "560", "descripcion": null },
+    { "nombre": "POLLO MUSLO", "precio": "280", "descripcion": null },
+    { "nombre": "POLLO PECHUGA", "precio": "290", "descripcion": null },
+    {
+        "nombre": "BIFE DE CHORIZO",
+        "precio": "560",
+        "descripcion": null
+    },
+    {
+        "nombre": "MILANESA DE CARNE CON PAPAS RUSTICAS",
+        "precio": "450",
+        "descripcion": null
+    },
+    {
+        "nombre": "PEJERREY MARINERA CON PAPAS",
+        "precio": "560",
+        "descripcion": null
+    },
+    {
+        "nombre": "MILANESA DE SURUBI CON PAPAS",
+        "precio": "570",
+        "descripcion": null
+    },
+    {
+        "nombre": "MILANESA DE CARNE CON PAPAS RUSTICAS",
+        "precio": "450",
+        "descripcion": null
+    },
+    {
+        "nombre": "SUPREMA CON PAPAS RUSTICAS",
+        "precio": "460",
+        "descripcion": null
+    },
+    { "nombre": "NOQUIS", "precio": "300", "descripcion": null },
+    { "nombre": "SORRENTINOS", "precio": "340", "descripcion": null },
+    { "nombre": "CANELONES", "precio": "340", "descripcion": null },
+    { "nombre": "SPAGUETTI", "precio": "270", "descripcion": null },
+    { "nombre": "TIRABUZONES", "precio": "270", "descripcion": null },
+    { "nombre": "SALSA BOLOGNESA", "precio": "110", "descripcion": null },
+    { "nombre": "POMAROLA/FILETO", "precio": "100", "descripcion": null },
+    { "nombre": "PESTO", "precio": "100", "descripcion": null },
+    { "nombre": "CREMA", "precio": "80", "descripcion": null },
+    { "nombre": "SALSA BLANCA", "precio": "80", "descripcion": null },
+    { "nombre": "RUCULA Y PARMESANO", "precio": "250", "descripcion": null },
+    { "nombre": "CAPRESE", "precio": "340", "descripcion": null },
+    { "nombre": "ENSALADA DE PULPO", "precio": "530", "descripcion": null },
+    { "nombre": "ENSALADA EL MUELLE", "precio": "400", "descripcion": null },
+    {
+        "nombre": "ENSALADA EL MUELLE CON POLLO",
+        "precio": "450",
+        "descripcion": null
+    },
+    {
+        "nombre": "ENSALADA EL MUELLE CON ATUN",
+        "precio": "470",
+        "descripcion": null
+    },
+    {
+        "nombre": "BONDIOLA DE CERDO A LA CERVEZA CON PAPAS RUSTICAS",
+        "precio": "540",
+        "descripcion": null
+    },
+    {
+        "nombre": "SORRENTINOS NEGROS (LANGOSTINOS,CEBOLLA Y RICOTTA) CON SALSA MARISCADA",
+        "precio": "620",
+        "descripcion": null
+    },
+    {
+        "nombre": "SALMON ROSA EN CREMA DE ESPARRAGOS",
+        "precio": "790",
+        "descripcion": null
+    },
+    {
+        "nombre": "SURUBI AL FUEGO CON VERDURAS AL HORNO Y SALSA CRIOLLA",
+        "precio": "680",
+        "descripcion": null
+    },
+    {
+        "nombre": "MOLLEJITAS AL VINO BLANCO CON PAPA RUSTICAS",
+        "precio": "720",
+        "descripcion": null
+    },
+    {
+        "nombre": "CAZUELA DE ARROZ CON MARISCOS",
+        "precio": "620",
+        "descripcion": null
+    },
+    {
+        "nombre": "RAVIOLONES DE SALMON",
+        "precio": "580",
+        "descripcion": null
+    },
+    {
+        "nombre": "BIFE DE CHORIZO EN REDUCCION DE MALBEC Y SOUFFLE DE PAPAS",
+        "precio": "700",
+        "descripcion": null
+    },
+    { "nombre": "POLLO \"EL MUELLE\"", "precio": "500", "descripcion": null },
+    { "nombre": "LOMO \"EL MUELLE\"", "precio": "690", "descripcion": null },
+    {
+        "nombre": "RAVIOLONES DE CORDERO EN SU SALSA",
+        "precio": "540",
+        "descripcion": null
+    },
+    {
+        "nombre": "SORRENTINOS DE CALABAZA, NUECES Y MUZZARELLA EN SALSA FILETO",
+        "precio": "460",
+        "descripcion": null
+    },
+    {
+        "nombre": "COPA HELADA DE UNA BOCHA",
+        "precio": "100",
+        "descripcion": null
+    },
+    {
+        "nombre": "COPA HELADA DE DOS BOCHAS",
+        "precio": "160",
+        "descripcion": null
+    },
+    {
+        "nombre": "COPA HELADA DE TRES BOCHAS",
+        "precio": "200",
+        "descripcion": null
+    },
+    { "nombre": "FLAN CASERO", "precio": "130", "descripcion": null },
+    { "nombre": "BUDIN DE PAN CASERO", "precio": "130", "descripcion": null },
+    { "nombre": "PANQUEQUES", "precio": "150", "descripcion": null },
+    { "nombre": "BROWNIES CON HELADO", "precio": "200", "descripcion": null },
+    { "nombre": "TIRAMISU", "precio": "200", "descripcion": null },
+    {
+        "nombre": "FRUTILLA CON CREMA O JUGO",
+        "precio": "180",
+        "descripcion": null
+    },
+    { "nombre": "ZAPALLO EN ALMIBAR", "precio": "160", "descripcion": null },
+    { "nombre": "COPA EL MUELLE", "precio": "260", "descripcion": null },
+    { "nombre": "DON PEDRO", "precio": "240", "descripcion": null },
+    { "nombre": "ENSALADA DE FRUTAS", "precio": "140", "descripcion": null },
+    { "nombre": "MOUSSE DE CHOCOLATE", "precio": "160", "descripcion": null },
+    { "nombre": "POSTRE SUPER OREO", "precio": "240", "descripcion": null },
+    { "nombre": "GOLOSO", "precio": "200", "descripcion": null },
+    {
+        "nombre": "PIATTELLI MALBEC RESERVA",
+        "precio": "1100",
+        "descripcion": null
+    },
+    { "nombre": "SEPTIMA OBRA MALBEC", "precio": "950", "descripcion": null },
+    { "nombre": "ALAMOS (MALBEC)", "precio": "800", "descripcion": null },
+    { "nombre": "LAS PERDICES", "precio": "640", "descripcion": null },
+    { "nombre": "FOND DE CAVE", "precio": "570", "descripcion": null },
+    {
+        "nombre": "CORDERO CON PIEL DE LOBO",
+        "precio": "500",
+        "descripcion": null
+    },
+    { "nombre": "LATITUD 33\u00b0", "precio": "490", "descripcion": null },
+    { "nombre": "SEPTIMA MALBEC", "precio": "550", "descripcion": null },
+    { "nombre": "PORTILLO", "precio": "360", "descripcion": null },
+    { "nombre": "ELEMENTOS", "precio": "380", "descripcion": null },
+    { "nombre": "LOS PASOS MALBEC", "precio": "380", "descripcion": null },
+    { "nombre": "SANTA JULIA 3/4", "precio": "380", "descripcion": null },
+    { "nombre": "SANTA JULIA 3/8", "precio": "260", "descripcion": null },
+    { "nombre": "MARQUES DEL SUR", "precio": "300", "descripcion": null },
+    { "nombre": "NORTON 3/8", "precio": "200", "descripcion": null },
+    { "nombre": "COPA DE VINO SEPTIMA", "precio": "190", "descripcion": null },
+    { "nombre": "PIATTELLI TORRONTES", "precio": "1100", "descripcion": null },
+    { "nombre": "SEPTIMA OBRA", "precio": "950", "descripcion": null },
+    { "nombre": "ALAMOS (MALBEC)", "precio": "800", "descripcion": null },
+    { "nombre": "LAS PERDICES", "precio": "640", "descripcion": null },
+    { "nombre": "SEPTIMA CHARDONNAY", "precio": "550", "descripcion": null },
+    { "nombre": "LATITUD 33\u00b0", "precio": "490", "descripcion": null },
+    { "nombre": "ELEMENTOS", "precio": "350", "descripcion": null },
+    { "nombre": "LOS PASOS", "precio": "380", "descripcion": null },
+    { "nombre": "CASTEL CHANDON", "precio": "340", "descripcion": null },
+    { "nombre": "ETCHART", "precio": "270", "descripcion": null },
+    { "nombre": "SANTA JULIA 3/4", "precio": "380", "descripcion": null },
+    { "nombre": "SANTA JULIA 3/8", "precio": "260", "descripcion": null },
+    {
+        "nombre": "SANTA JULIA CHENIN DULCE NATURAL",
+        "precio": "400",
+        "descripcion": null
+    },
+    { "nombre": "NORTON 3/8", "precio": "200", "descripcion": null },
+    { "nombre": "SEPTIMA ROSE", "precio": "620", "descripcion": null },
+    { "nombre": "NORTON MIL ROSAS", "precio": "400", "descripcion": null },
+    { "nombre": "NORTON COSECHA TARDIA", "precio": "400", "descripcion": null },
+    {
+        "nombre": "CHAMPAGNE MARIA DULCE O EXTRA BRUTT",
+        "precio": "790",
+        "descripcion": null
+    },
+    {
+        "nombre": "CHAMPAGNE NIETO SENETINER",
+        "precio": "800",
+        "descripcion": null
+    },
+    {
+        "nombre": "CHAMPAGNE ANNA CODORNIU",
+        "precio": "2000",
+        "descripcion": null
+    },
+    { "nombre": "CHAMPAGNE CHANDON", "precio": "840", "descripcion": null },
+    { "nombre": "CHAMPAGNE BARON B", "precio": "1650", "descripcion": null },
+    { "nombre": "SIDRA 1888", "precio": "640", "descripcion": null },
+    { "nombre": "COPA DE VINO SEPTIMA", "precio": "190", "descripcion": null },
+    { "nombre": "1/2 PINTA STELLA ARTOIS", "precio": "0", "descripcion": null },
+    { "nombre": "PINTA STELLA ARTOIS", "precio": "0", "descripcion": null },
+    { "nombre": "1/2 PINTA PATAGONIA", "precio": "0", "descripcion": null },
+    { "nombre": "PINTA PATAGONIA", "precio": "0", "descripcion": null },
+    { "nombre": "BRAHMA", "precio": "200", "descripcion": null },
+    { "nombre": "STELLA ARTOIS NEGRA", "precio": "290", "descripcion": null },
+    { "nombre": "CORONA700cc", "precio": "290", "descripcion": null },
+    { "nombre": "GASEOSA", "precio": "100", "descripcion": null },
+    { "nombre": "AGUA SABORIZADA", "precio": "110", "descripcion": null },
+    {
+        "nombre": "AGUA SIN GAS O CON GAS",
+        "precio": "110",
+        "descripcion": null
+    },
+    { "nombre": "JUGO DE NARANJAS", "precio": "150", "descripcion": null }
+]

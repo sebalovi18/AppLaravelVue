@@ -6,8 +6,8 @@
 </template>
 <script>
 import { mapState , mapActions } from "vuex";
-import CrearCliente from "../components/ClientesComponents/CrearCliente";
-import TablaClientes from '../components/ClientesComponents/TablaClientes';
+import CrearCliente from "../components/ClientesComponent/CrearCliente";
+import TablaClientes from '../components/ClientesComponent/TablaClientes';
 export default {
   components: {
     CrearCliente,

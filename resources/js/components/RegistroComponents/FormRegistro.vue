@@ -119,7 +119,7 @@ import {
   minValue,
   maxValue,
 } from "vuelidate/lib/validators";
-import TablaClientes from "../ClientesComponents/TablaClientes";
+import TablaClientes from "../ClientesComponent/TablaClientes";
 import TOAST from '../../Mixins/Toast';
 export default {
   mixins:[TOAST],

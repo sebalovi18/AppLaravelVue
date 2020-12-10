@@ -31,4 +31,5 @@ class ProductoController extends Controller
         $this->productos->deleteProducto($id);
         return $this->getAllProductos();
     }
+    
 }

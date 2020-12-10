@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Services\Emails\ServiceEnvioMails;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,4 +45,6 @@ Route::put('productos/{id}', 'ProductoController@update');
 Route::delete('producto/{id}', 'ProductoController@destroy');
 
 /////////////////////////////////////////////////////////////////
-Route::get('pruebas', 'ContactoController@automaticFormResponse');
+Route::get('pruebas', function(){
+
+});

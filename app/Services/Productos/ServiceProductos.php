@@ -22,7 +22,7 @@ class ServiceProductos
     {
         $this->producto->create($validated);
     }
-    public function updateProducto($id,$validated)
+    public function updateProducto($id, $validated)
     {
         $this->producto->findOrFail($id)->update($validated);
     }
@@ -30,4 +30,22 @@ class ServiceProductos
     {
         $this->producto->findOfFail($id)->delete();
     }
+    /***************** MOMENTANEO BACKUP *****************/
+    public function loadDefaultDb()
+    {
+        $productos = json_decode((file_get_contents(base_path('ProductosDbBackup/ProductosBackup.json'))));
+        $collection = collect($productos);
+        $collection = $collection->map(function ($value) {
+            return [
+                'nombre' => $value->nombre,
+                'precio' => $value->precio,
+                'descripcion' => $value->descripcion
+            ];
+        });
+        foreach ($collection as $producto) {
+            $this->storeProducto($producto);
+        }
+        echo "Finalizado...";
+    }
+    /*******************************************************************/
 }

@@ -26,7 +26,7 @@ class ProductoRequest extends FormRequest
         return [
             'nombre'=>'required|min:2|max:255',
             'precio'=>'required|min:1|max:7',
-            'descripcion'=>'max:255'
+            'descripcion'=>'nullable|max:255'
         ];
     }
 }
