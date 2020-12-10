@@ -28,19 +28,20 @@ Route::get('noticias' , 'NoticiasController@getNoticias');
 Route::post('contacto' , 'ContactoController@setMensaje');
 
 /* Clientes Api */
-Route::get('clientes','ClienteController@index');
+Route::get('clientes','ClienteController@getAllClientes');
 Route::post('clientes','ClienteController@store');
 Route::put('clientes/{id}','ClienteController@update');
 Route::delete('clientes/{id}','ClienteController@destroy');
 
 /* Registro de Mesas Api */
-Route::get('registro' , 'RegistroMesasController@getAllRegistrosMesasJson');
-Route::post('registro' , 'RegistroMesasController@storeRegistroMesa');
-Route::put('registro/{id}' , 'RegistroMesasController@updateRegistroMesa');
-Route::delete('registro/{id}' , 'RegistroMesasController@deleteRegistroMesa');
+Route::get('registro' , 'RegistroMesasController@getAllRegistrosMesas');
+Route::post('registro' , 'RegistroMesasController@store');
+Route::put('registro/{id}' , 'RegistroMesasController@update');
+Route::delete('registro/{id}' , 'RegistroMesasController@delete');
 
-//////////////////////////////////////////////////////////////////////////////////////////
-Route::get('prueba' , 'ClienteController@prueba');
-Route::get('prueba2', function(ServiceEnvioMails $email){
-    $email->enviarPromosSemanales();
-});
+/* Productos Api */
+Route::get('productos', 'ProductoController@getAllProductos');
+Route::post('productos' , 'ProductoController@store');
+Route::put('productos/{id}', 'ProductoController@update');
+Route::delete('producto/{id}', 'ProductoController@destroy');
+

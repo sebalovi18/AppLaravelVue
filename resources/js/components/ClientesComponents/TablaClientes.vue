@@ -35,7 +35,7 @@
       <template v-slot:cell(acciones)="data">
         <slot name="acciones" :data_row="data">
           <EditarCliente :prop_cliente="data" />
-          <b-button variant="danger" @click="borrar(data.item)"
+          <b-button variant="danger" size="sm" @click="borrar(data.item)"
             ><b-icon-trash-fill variant="light"></b-icon-trash-fill
           ></b-button>
         </slot>

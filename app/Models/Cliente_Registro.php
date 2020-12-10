@@ -11,3 +11,4 @@ class Cliente_Registro extends Model
     use SoftDeletes;
     protected $table="cliente_registro";
 }
+//borrar

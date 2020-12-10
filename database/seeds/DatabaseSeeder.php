@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Cliente_Registro;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,7 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(ClienteSeeder::class);
         $this->call(RegistroSeeder::class);
-        $this->call(Cliente_Registro_Seeder::class);
+        $this->call(Cliente_Registro_Seeder::class);//Borrar
+        $this->call(ProductoSeeder::class);
         // $this->call(UserSeeder::class);
     }
 }

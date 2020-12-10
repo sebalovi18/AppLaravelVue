@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\Services\RegistroMesas\ServiceRegistroMesas;
+use App\Services\RegistroMesas\ServiceRegistroMesas;
 use App\Models\Registro;
 use Illuminate\Support\ServiceProvider;
 

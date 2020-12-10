@@ -28,6 +28,7 @@ class EmailPromo extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.promo');
+        return $this->subject('Promocion')
+                    ->markdown('emails.promo');
     }
 }

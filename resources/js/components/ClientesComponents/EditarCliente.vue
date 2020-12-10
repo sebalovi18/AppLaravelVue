@@ -1,7 +1,7 @@
 <template>
   <div class="d-inline">
     <!------- Accion editar (Separar en otro componente) ------->
-    <b-button @click="showModal(prop_cliente.index)" variant="primary"
+    <b-button @click="showModal(prop_cliente.index)" size="sm" variant="primary"
       ><b-icon-pencil-fill variant="light"></b-icon-pencil-fill
     ></b-button>
     <b-modal :ref="prop_cliente.index" hide-footer centered>

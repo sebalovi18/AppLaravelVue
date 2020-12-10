@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\Services\Clientes\ServiceClientesCrud;
+use App\Services\Clientes\ServiceClientes;
 use App\Models\Cliente;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,8 +15,8 @@ class ClienteProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(ServiceClientesCrud::class,function($app){
-            return new ServiceClientesCrud($app->make(Cliente::class));
+        $this->app->singleton(ServiceClientes::class,function($app){
+            return new ServiceClientes($app->make(Cliente::class));
         });
     }
 

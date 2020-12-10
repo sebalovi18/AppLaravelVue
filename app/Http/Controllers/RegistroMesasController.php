@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegistroMesasRequest;
-use App\Http\Services\RegistroMesas\ServiceRegistroMesas;
+use App\Http\Resources\RegistroMesasResource;
+use App\Services\RegistroMesas\ServiceRegistroMesas;
 
 class RegistroMesasController extends Controller
 {
@@ -11,20 +12,23 @@ class RegistroMesasController extends Controller
     {
         $this->serviceRegistroMesas = $serviceRegistroMesas;
     }
-    public function getAllRegistrosMesasJson()
+    public function getAllRegistrosMesas()
     {
-        return $this->serviceRegistroMesas->getAllRegistrosMesasJson();
+        return RegistroMesasResource::collection($this->serviceRegistroMesas->getAllRegistrosMesas());
     }
-    public function storeRegistroMesa(RegistroMesasRequest $request)
+    public function store(RegistroMesasRequest $request)
     {
-        return $this->serviceRegistroMesas->store($request->validated());
+        $this->serviceRegistroMesas->store($request->validated());
+        return $this->getAllRegistrosMesas();
     }
-    public function updateRegistroMesa($id ,RegistroMesasRequest $request)
+    public function update($id ,RegistroMesasRequest $request)
     {  
-        return $this->serviceRegistroMesas->updateRegistroMesa($id , $request->validated());
+        $this->serviceRegistroMesas->updateRegistroMesa($id , $request->validated());
+        return $this->getAllRegistrosMesas();
     }
-    public function deleteRegistroMesa($id)
+    public function delete($id)
     {
-        return $this->serviceRegistroMesas->deleteRegistroMesa($id);
+        $this->serviceRegistroMesas->deleteRegistroMesa($id);
+        return $this->getAllRegistrosMesas();
     }
 }

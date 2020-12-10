@@ -11,3 +11,4 @@ $factory->define(Cliente_Registro::class, function (Faker $faker) {
         'registro_id'=>$faker->numberBetween($min=1,$max=50)
     ];
 });
+//borrar

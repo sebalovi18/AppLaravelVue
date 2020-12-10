@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Services\Clientes\ServiceClientesCrud;
+use App\Services\Emails\ServiceEnvioMails;
 use Illuminate\Console\Command;
 
 class MailBirthdayOffers extends Command
@@ -36,7 +36,8 @@ class MailBirthdayOffers extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(ServiceEnvioMails $serviceEmail)
     {
+        $serviceEmail->enviarPromosSemanales();
     }
 }
