@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Registro;
 use App\Services\Productos\ServiceProductos;
 use Illuminate\Support\Facades\Route;
 
@@ -47,5 +48,4 @@ Route::delete('productos/{id}', 'ProductoController@destroy');
 
 /////////////////////////////////////////////////////////////////
 Route::get('pruebas', function(){
-
 });

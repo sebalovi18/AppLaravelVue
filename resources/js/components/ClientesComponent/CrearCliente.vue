@@ -3,10 +3,11 @@
         <b-button v-b-modal.crearCliente block squared variant="success">
             <b-icon-person-plus-fill></b-icon-person-plus-fill>
         </b-button>
-        <b-modal id="crearCliente" centered hide-footer>
-            <template v-slot:modal-title>Creador de Clientes</template>
+        <b-modal id="crearCliente" centered hide-footer header-bg-variant="success" header-text-variant="light">
+            <template v-slot:modal-title>Crear Cliente</template>
             <ClientesFormComponent @getData=" properties = $event">
                 <template #default>
+                    <b-button variant="danger" class="ml-1" @click="$bvModal.hide('crearCliente')">Cancelar</b-button>
                     <b-button variant="primary" class="ml-1" @click="crear()">Crear</b-button>
                 </template>
             </ClientesFormComponent>

@@ -34,10 +34,14 @@
       <!------------------------------------->
       <template v-slot:cell(acciones)="data">
         <slot name="acciones" :data_row="data">
-          <EditarCliente :prop_cliente="data" />
-          <b-button variant="danger" size="sm" @click="borrar(data.item)"
-            ><b-icon-trash-fill variant="light"></b-icon-trash-fill
-          ></b-button>
+          <div class="d-flex">
+            <EditarCliente :prop_cliente="data" />
+            <div>
+              <b-button variant="danger" size="sm" @click="borrar(data.item)" class="ml-2">
+                <b-icon-trash-fill variant="light"></b-icon-trash-fill>
+              </b-button>
+            </div>
+          </div>
         </slot>
       </template>
     </b-table>
@@ -135,7 +139,7 @@ export default {
       ) {
         return this.$props.perpage;
       }
-      return 10;
+      return 15;
     },
     ...mapState("ClienteModule", ["clientes"]),
   },

@@ -6,6 +6,7 @@ import Clientes from '../Views/Clientes.vue';
 import Registro from '../Views/Registro.vue';
 import Contacto from '../Views/Contacto.vue';
 import Productos from '../Views/Productos.vue';
+import Prueba from '../Views/Prueba.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -34,9 +35,15 @@ const routes = [
         component : Productos
     },
     {
+        path: '/prueba',
+        component : Prueba
+    },
+    /*
+    {
         path:'*',
         component: Home
     }
+    */
 ];
 
 const router = new VueRouter({

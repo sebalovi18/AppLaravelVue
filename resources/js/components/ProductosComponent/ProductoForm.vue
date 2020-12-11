@@ -6,6 +6,7 @@
         <b-form-input
           id="productname"
           v-model="$v.producto.nombre.$model"
+          :state="checkField($v.producto.nombre)"
         ></b-form-input>
       </b-input-group>
     </b-form-group>
@@ -16,6 +17,7 @@
           id="productprice"
           type="number"
           v-model.number="$v.producto.precio.$model"
+          :state="checkField($v.producto.precio)"
         ></b-form-input>
       </b-input-group>
     </b-form-group>
@@ -28,6 +30,7 @@
         <b-form-textarea
           id="productdescription"
           v-model="$v.producto.descripcion.$model"
+          :state="checkField($v.producto.descripcion)"
           no-resize
         ></b-form-textarea>
       </b-input-group>
@@ -67,6 +70,14 @@ export default {
         descripcion:this.propProducto.descripcion
       }
     };
+  },
+  methods:{
+    checkField(field){
+      if(field.$invalid){
+        return field.$dirty ? false : null;
+      }
+      return field.$dirty ? true : null;
+    }
   },
   mounted(){
     this.$emit('getProductoData',this.$v);

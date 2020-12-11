@@ -24,14 +24,14 @@
     >
       <template v-slot:cell(Acciones)="data">
         <slot name="acciones" :data_row="data">
-          <EditarProducto :propToEdit="data.item" />
-          <b-button
-            variant="danger"
-            size="sm"
-            @click="borrarProducto(data.item)"
-          >
-            <b-icon-trash-fill variant="light"></b-icon-trash-fill>
-          </b-button>
+          <div class="d-flex">
+            <EditarProducto :propToEdit="data" />
+            <div>
+              <b-button variant="danger" size="sm" @click="borrarProducto(data.item)" class="ml-2">
+                <b-icon-trash-fill variant="light"></b-icon-trash-fill>
+              </b-button>
+            </div>
+          </div>
         </slot>
       </template>
     </b-table>
@@ -58,7 +58,7 @@ export default {
     perPage:{
       type:Number,
       default:function(){
-        return 10
+        return 15
       }
     }
   },
@@ -73,9 +73,7 @@ export default {
         {
           key: "nombre",
           label: "Nombre de producto",
-          formatter: function (val) {
-            return val.toUpperCase();
-          },
+          formatter:v=>v.toUpperCase(),
           sortable: true,
         },
         {

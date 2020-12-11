@@ -15,4 +15,8 @@ class Registro extends Model
     {
         return $this->belongsToMany(Cliente::class)->withTimestamps();
     }
+    public function productos()
+    {
+        return $this->belongsToMany(Producto::class)->withTimestamps();
+    }
 }

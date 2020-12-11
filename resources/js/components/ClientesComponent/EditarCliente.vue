@@ -1,10 +1,10 @@
 <template>
-  <div class="d-inline">
+  <div>
     <b-button @click="showModal(prop_cliente.index)" size="sm" variant="primary"
       ><b-icon-pencil-fill variant="light"></b-icon-pencil-fill
     ></b-button>
-    <b-modal :ref="prop_cliente.index" hide-footer centered>
-      <template v-slot:modal-title>Edicion de Clientes</template>
+    <b-modal :ref="prop_cliente.index" hide-footer centered header-bg-variant="primary" header-text-variant="light">
+      <template v-slot:modal-title>Editar Cliente</template>
       <ClientesFormComponent
         @getData="properties = $event"
         :cliente="prop_cliente.item"
