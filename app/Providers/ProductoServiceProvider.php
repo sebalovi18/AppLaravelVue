@@ -15,9 +15,12 @@ class ProductoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(ServiceProductos::class,function($app){
-            return new ServiceProductos($app->make(Producto::class));
-        });
+        $this->app->singleton(
+            ServiceProductos::class,
+            function ($app) {
+                return new ServiceProductos($app->make(Producto::class));
+            }
+        );
     }
 
     /**

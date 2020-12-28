@@ -3,6 +3,7 @@
 namespace App\Services\Clientes;
 
 use App\Models\Cliente;
+use Exception;
 
 class ServiceClientes
 {
@@ -12,38 +13,56 @@ class ServiceClientes
     }
     public function getAllClientes()
     {
-        return $this->cliente->all();
+        try {
+            return $this->cliente->all();
+        } catch (Exception $err) {
+            abort(404, "Clientes no encontrados"); // o 400 ? o 412?
+        }
     }
-    public function getAllClientesJson()
+    public function getCliente(int $id)
     {
-        return $this->cliente->all();
-    }
-    public function getCliente(int $id){
-        return $this->cliente->find($id);
+        try {
+            return $this->cliente->find($id);
+        } catch (Exception $err) {
+            abort(404, "Cliente no encontrado"); // o 400 ? o 412?
+        }
     }
     public function storeCliente($validated)
     {
-        $this->cliente->create($validated);
+        try {
+            $this->cliente->create($validated);
+        } catch (Exception $err) {
+            abort(409, "Cliente ya existe");
+        }
     }
-    public function updateCliente($validated ,int $id)
-    {  
-        $this->cliente->findOrFail($id)->update($validated);
+    public function updateCliente($validated, int $id)
+    {
+        try {
+            $this->cliente->find($id)->update($validated);
+        } catch (Exception $err) {
+            abort(422, "No se puede editar el cliente");
+        }
     }
     public function destroyCliente(int $id)
     {
-        $this->cliente->findOrFail($id)->delete();
-    }
-    //////////////////////////////////////////////////////////
-    public function getAllClientesEmails()
-    {
-        return $this->cliente->pluck('fnacimiento');
+        try {
+            $this->cliente->find($id)->delete();
+        } catch (Exception $err) {
+            abort(422, "No se pudo eliminar el cliente");
+        }
     }
     public function getAllClientesBirthday()
     {
-        return $this->cliente->whereMonth('fnacimiento' , date('m'))
-                             ->where(function($query){
-                                 $query->whereDay('fnacimiento' , date('d'));
-                             })
-                             ->get();
+        try {
+            return $this->cliente->whereMonth('fnacimiento', date('m'))
+                ->where(
+                    function ($query) {
+                        $query->whereDay('fnacimiento', date('d'));
+                    }
+                )
+                ->get();
+        } catch (Exception $err) {
+            abort(422, "No se pudo encontar clientes");
+        }
     }
 }

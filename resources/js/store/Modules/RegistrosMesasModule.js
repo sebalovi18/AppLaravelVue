@@ -11,43 +11,53 @@ const RegistrosMesasModule = {
     },
     actions: {
         async getAllRegistrosMesasDb({ state }) {
-            await axios
-                .get(`${window.location.origin}/api/registro`)
+            await axios(`${window.location.origin}/api/registro`)
                 .then(res => {
-                    state.registros = res.data;
+                    if (res.status === 200) {
+                        state.registros = res.data;
+                    }
                 })
                 .catch(err => {
                     state.registros = [];
-                    state.error = err.data;
+                    console.log(err);
                 });
         },
-        async setNuevoRegistroDb({ state }, registro) {
+        async setNuevoRegistroDb(context, registro) {
             await axios
                 .post(`${window.location.origin}/api/registro`, registro)
                 .then(res => {
-                    state.registros = res.data;
+                    if (res.status === 201) {
+                        context.dispatch('getAllRegistrosMesasDb');
+                    }
                 })
                 .catch(err => {
                     state.registros = [];
                     state.error = err.data;
                 });
         },
-        async updateRegistroDb({ state }, registro) {
+        async updateRegistroDb(context, registro) {
             await axios
-                .put(`${window.location.origin}/api/registro/${registro.id}` , registro)
+                .put(
+                    `${window.location.origin}/api/registro/${registro.id}`,
+                    registro
+                )
                 .then(res => {
-                    state.registros = res.data;
+                    if (res.status === 201) {
+                        context.dispatch('getAllRegistrosMesasDb');
+                    }
                 })
                 .catch(err => {
                     state.registros = [];
                     state.error = err.data;
                 });
         },
-        async borrarRegistroDb({ state }, registro) {
+        async borrarRegistroDb(context, registro) {
             await axios
                 .delete(`${window.location.origin}/api/registro/${registro}`)
                 .then(res => {
-                    state.registros = res.data;
+                    if (res.status === 204) {
+                        context.dispatch('getAllRegistrosMesasDb');
+                    }
                 })
                 .catch(err => {
                     state.registros = [];

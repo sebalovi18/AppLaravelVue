@@ -3,7 +3,7 @@
     <b-table
       striped
       hover
-      :items="getRegistros.data"
+      :items="getRegistros"
       :fields="fields"
       :tbody-tr-class="checkDate"
       dark

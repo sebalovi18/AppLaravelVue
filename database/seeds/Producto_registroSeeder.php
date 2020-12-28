@@ -12,6 +12,6 @@ class Producto_registroSeeder extends Seeder
      */
     public function run()
     {
-        factory(Producto_registro::class,100)->create();
+        factory(Producto_registro::class, 100)->create();
     }
 }

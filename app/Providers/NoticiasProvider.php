@@ -14,9 +14,16 @@ class NoticiasProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ServiceNoticias::class,function($app){
-            return new ServiceNoticias($app->make('Illuminate\Http\Client\Factory'));
-        });
+        $this->app->bind(
+            ServiceNoticias::class,
+            function ($app) {
+                return new ServiceNoticias(
+                    $app->make('Illuminate\Http\Client\Factory'),
+                    env('NEWS_API_URI'),
+                    env('NEWS_API_KEY')
+                );
+            }
+        );
     }
 
     /**

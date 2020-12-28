@@ -13,13 +13,16 @@ class ClienteRegistro extends Migration
      */
     public function up()
     {
-        Schema::create('cliente_registro',function(Blueprint $table){
-            $table->id();
-            $table->foreignId('cliente_id')->constrained();
-            $table->foreignId('registro_id')->constrained();
-            $table->softDeletes();
-            $table->timestamps();
-        });
+        Schema::create(
+            'cliente_registro',
+            function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('cliente_id')->constrained();
+                $table->foreignId('registro_id')->constrained();
+                $table->softDeletes();
+                $table->timestamps();
+            }
+        );
     }
 
     /**

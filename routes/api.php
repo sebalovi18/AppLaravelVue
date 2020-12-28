@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Registro;
-use App\Services\Productos\ServiceProductos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,37 +13,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-}); 
-*/
-
 /* Noticias */
-
-Route::get('noticias' , 'NoticiasController@getNoticias');
-
+Route::get('noticias', 'NoticiasController@getNoticias');
 /* Contacto via email */
-Route::post('contacto' , 'ContactoController@automaticFormResponse');
-
+Route::post('contacto', 'ContactoController@automaticFormResponse');
 /* Clientes Api */
-Route::get('clientes','ClienteController@getAllClientes');
-Route::post('clientes','ClienteController@store');
-Route::put('clientes/{id}','ClienteController@update');
-Route::delete('clientes/{id}','ClienteController@destroy');
-
+Route::prefix('clientes')->group(
+    function () {
+        Route::get('', 'ClienteController@getAllClientes');
+        Route::post('', 'ClienteController@store');
+        Route::put('/{id}', 'ClienteController@update');
+        Route::delete('/{id}', 'ClienteController@destroy');
+    }
+);
 /* Registro de Mesas Api */
-Route::get('registro' , 'RegistroMesasController@getAllRegistrosMesas');
-Route::post('registro' , 'RegistroMesasController@store');
-Route::put('registro/{id}' , 'RegistroMesasController@update');
-Route::delete('registro/{id}' , 'RegistroMesasController@delete');
-
+Route::prefix('registro')->group(
+    function () {
+        Route::get('', 'RegistroMesasController@getAllRegistrosMesas');
+        Route::post('', 'RegistroMesasController@store');
+        Route::put('/{id}', 'RegistroMesasController@update');
+        Route::delete('/{id}', 'RegistroMesasController@delete');
+    }
+);
 /* Productos Api */
-Route::get('productos', 'ProductoController@getAllProductos');
-Route::post('productos' , 'ProductoController@store');
-Route::put('productos/{id}', 'ProductoController@update');
-Route::delete('productos/{id}', 'ProductoController@destroy');
-
+Route::prefix('productos')->group(
+    function () {
+        Route::get('', 'ProductoController@getAllProductos');
+        Route::post('', 'ProductoController@store');
+        Route::put('/{id}', 'ProductoController@update');
+        Route::delete('/{id}', 'ProductoController@destroy');
+    }
+);
 /////////////////////////////////////////////////////////////////
-Route::get('pruebas', function(){
-});

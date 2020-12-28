@@ -15,9 +15,12 @@ class ClienteProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(ServiceClientes::class,function($app){
-            return new ServiceClientes($app->make(Cliente::class));
-        });
+        $this->app->singleton(
+            ServiceClientes::class, 
+            function ($app) {
+                return new ServiceClientes($app->make(Cliente::class));
+            }
+        );
     }
 
     /**

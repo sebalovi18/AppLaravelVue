@@ -13,7 +13,8 @@ class ContactoController extends Controller
         $this->service_contacto = $service_contacto;
     }
 
-    public function automaticFormResponse(ContactoFormRequest $request){
+    public function automaticFormResponse(ContactoFormRequest $request) 
+    {
         $this->service_contacto->automaticFormResponse($request);
     }
 }

@@ -32,7 +32,8 @@ class AutomaticFormResponse extends Mailable
      */
     public function build()
     {
-        return $this->subject('Contacto con Restaurante el muelle')
-                    ->markdown('emails.automaticFormResponse');
+        return
+            $this->subject('Contacto con Restaurante el muelle')
+            ->markdown('emails.automaticFormResponse');
     }
 }

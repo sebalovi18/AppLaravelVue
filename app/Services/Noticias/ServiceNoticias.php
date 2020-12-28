@@ -6,16 +6,19 @@ use Illuminate\Http\Client\Factory;
 
 class ServiceNoticias
 {
-    public function __construct(Factory $http)
+    public function __construct(Factory $http, $api_uri, $api_key)
     {
         $this->http = $http;
+        $this->api_uri = $api_uri;
+        $this->api_key = $api_key;
     }
     public function getNoticias()
     {
         $parameters = [
-            'country'=>'ar',
-            'apiKey'=>env('NEWS_API_KEY')
+            'country' => 'ar',
+            'apiKey' => $this->api_key
         ];
-        return $this->http->get('https://newsapi.org/v2/top-headlines' , $parameters)->json();
+        return
+            $this->http->get($this->api_uri, $parameters)->json();
     }
 }

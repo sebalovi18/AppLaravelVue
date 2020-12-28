@@ -23,7 +23,7 @@ class ProductoController extends Controller
     }
     public function update(ProductoRequest $request, int $id)
     {
-        $this->productos->updateProducto($id,$request->validated());
+        $this->productos->updateProducto($id, $request->validated());
         return $this->getAllProductos();
     }
     public function destroy(int $id)

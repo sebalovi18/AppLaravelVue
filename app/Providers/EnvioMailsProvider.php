@@ -17,9 +17,16 @@ class EnvioMailsProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(ServiceEnvioMails::class , function($app){
-            return new ServiceEnvioMails($app->make(ServiceClientes::class) , $app->make(EmailPromo::class) , $app->make(Mailer::class));
-        });
+        $this->app->singleton(
+            ServiceEnvioMails::class,
+            function ($app) {
+                return new ServiceEnvioMails(
+                    $app->make(ServiceClientes::class),
+                    $app->make(EmailPromo::class),
+                    $app->make(Mailer::class)
+                );
+            }
+        );
     }
 
     /**

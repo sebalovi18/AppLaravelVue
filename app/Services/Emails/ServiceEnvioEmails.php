@@ -2,14 +2,17 @@
 
 namespace App\Services\Emails;
 
-use App\Services\Clientes\ServiceClientesCrud;
 use App\Mail\EmailPromo;
+use App\Services\Clientes\ServiceClientes;
 use Illuminate\Mail\Mailer;
 
-class ServiceEnvioMails 
+class ServiceEnvioMails
 {
-    public function __construct(ServiceClientesCrud $clienteService , EmailPromo $mailPromo , Mailer $mailer)
-    {   
+    public function __construct(
+        ServiceClientes $clienteService,
+        EmailPromo $mailPromo,
+        Mailer $mailer
+    ) {
         $this->clienteService = $clienteService;
         $this->mailPromo = $mailPromo;
         $this->mailer = $mailer;
@@ -17,12 +20,14 @@ class ServiceEnvioMails
     public function enviarPromosSemanales()
     {
         $clientesBirthday_format = $this->clienteService->getAllClientesBirthday()
-                                                        ->map(function($val){
-                                                            return [
-                                                                'name'=>$val->nombre,
-                                                                'email'=>$val->email
-                                                            ];
-                                                        });
+            ->map(
+                function ($val) {
+                    return [
+                        'name' => $val->nombre,
+                        'email' => $val->email
+                    ];
+                }
+            );
 
         $this->mailer->to($clientesBirthday_format)->send($this->mailPromo);
     }

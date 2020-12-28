@@ -1,35 +1,72 @@
 const ClienteModule = {
-    namespaced : true,
+    namespaced: true,
     state: {
         clientes: [],
-        error:null
+        error: null
     },
     actions: {
-        //Clientes CRUD   
+        //Clientes CRUD
         async getClientes({ state }) {
-            await axios.get(`${window.location.origin}/api/clientes`)
-            .then(res=>{
-                state.clientes = res.data.data
+            await axios(`${window.location.origin}/api/clientes`, {
+                method: "get",
+                header: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                }
             })
-            .catch(err=>console.error(`Error de Aplicacion!!! : ${err.response.data.message}`));
-        }, 
-        async updateCliente({ state }, cliente) {
-            await axios.put(`${window.location.origin}/api/clientes/${cliente.id}`,cliente)
-            .then(res=>{state.clientes = res.data.data;})
-            .catch(err=>console.error(`Error de Aplicacion!!! : ${err.response.data.message}`));
+                .then(res => {
+                    if (res.status === 200) {
+                        state.clientes = res.data;
+                    }
+                })
+                .catch(err =>
+                    console.error(
+                        `Error de Aplicacion!!! : ${err.response.status}`
+                    )
+                );
         },
-        async deleteCliente({ state }, cliente) {
-            await axios.delete(`${window.location.origin}/api/clientes/${cliente.id}`)
-            .then(res=>{state.clientes = res.data.data;})
-            .catch(err=>console.error(`Error de Aplicacion!!! : ${err.response.data.message}`));
+        async updateCliente(context, cliente) {
+            await axios
+                .put(
+                    `${window.location.origin}/api/clientes/${cliente.id}`,
+                    cliente
+                )
+                .then(res => {
+                    if (res.status === 201) {
+                        context.dispatch("getClientes");
+                    }
+                })
+                .catch(err => {
+                    console.error(`Error de Aplicacion!!! : ${err.response.status}`);
+                });
         },
-        async createCliente({ state }, cliente) {
-            await axios.post(`${window.location.origin}/api/clientes`,cliente)
-            .then(res=>{state.clientes = res.data.data;})
-            .catch(err=>{
-                state.error = err.response.data;
-                console.error(`Error de Aplicacion!!! : ${err.response.data.message}`)
-            })
+        async deleteCliente(context, cliente) {
+            await axios
+                .delete(`${window.location.origin}/api/clientes/${cliente.id}`)
+                .then(res => {
+                    if (res.status === 204) {
+                        context.dispatch("getClientes");
+                    }
+                })
+                .catch(err =>
+                    console.error(
+                        `Error de Aplicacion!!! : ${err.response.status}`
+                    )
+                );
+        },
+        async createCliente(context, cliente) {
+            await axios
+                .post(`${window.location.origin}/api/clientes`, cliente)
+                .then(res => {
+                    if (res.status === 201) {
+                        context.dispatch("getClientes");
+                    }
+                })
+                .catch(err => {
+                    console.error(
+                        `Error de Aplicacion!!! : ${err.response.status}`
+                    );
+                });
         }
         //////////////////////////////////////////////////////
     }

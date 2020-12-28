@@ -10,7 +10,9 @@ class NoticiasController extends Controller
     {
         $this->noticias = $noticias;
     }
-    public function getNoticias(){
-        return $this->noticias->getNoticias();
+    public function getNoticias()
+    {
+        $response = $this->noticias->getNoticias();
+        return response($response, 200);
     }
 }

@@ -13,13 +13,16 @@ class CreateRegistrosTable extends Migration
      */
     public function up()
     {
-        Schema::create('registros', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('n_mesa');
-            $table->dateTime('fecha');
-            $table->softDeletes();
-            $table->timestamps();
-        });
+        Schema::create(
+            'registros',
+            function (Blueprint $table) {
+                $table->id();
+                $table->unsignedInteger('n_mesa');
+                $table->dateTime('fecha');
+                $table->softDeletes();
+                $table->timestamps();
+            }
+        );
     }
 
     /**

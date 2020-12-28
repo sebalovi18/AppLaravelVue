@@ -16,9 +16,15 @@ class ContactoFormProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(ServiceContacto::class , function($app){
-            return new ServiceContacto($app->make(Mailer::class) , $app->make(AutomaticFormResponse::class));
-        });
+        $this->app->singleton(
+            ServiceContacto::class, 
+            function ($app) {
+                return new ServiceContacto(
+                    $app->make(Mailer::class), 
+                    $app->make(AutomaticFormResponse::class)
+                );
+            }
+        );
     }
 
     /**

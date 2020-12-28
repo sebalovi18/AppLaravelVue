@@ -14,21 +14,33 @@ class RegistroMesasController extends Controller
     }
     public function getAllRegistrosMesas()
     {
-        return RegistroMesasResource::collection($this->serviceRegistroMesas->getAllRegistrosMesas());
+        $response = $this->serviceRegistroMesas->getAllRegistrosMesas();
+
+        return
+            response(
+                RegistroMesasResource::collection($response),
+                200
+            );
     }
     public function store(RegistroMesasRequest $request)
     {
         $this->serviceRegistroMesas->store($request->validated());
-        return $this->getAllRegistrosMesas();
+
+        return
+            response('', 201);
     }
-    public function update($id ,RegistroMesasRequest $request)
-    {  
-        $this->serviceRegistroMesas->updateRegistroMesa($id , $request->validated());
-        return $this->getAllRegistrosMesas();
+    public function update($id, RegistroMesasRequest $request)
+    {
+        $this->serviceRegistroMesas->updateRegistroMesa($id, $request->validated());
+
+        return 
+            response('', 201);
     }
     public function delete($id)
     {
         $this->serviceRegistroMesas->deleteRegistroMesa($id);
-        return $this->getAllRegistrosMesas();
+
+        return 
+            response('', 204);
     }
 }

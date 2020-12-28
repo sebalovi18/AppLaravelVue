@@ -8,28 +8,43 @@ use App\Services\Clientes\ServiceClientes;
 
 class ClienteController extends Controller
 {
-
     public function __construct(ServiceClientes $cliente)
     {
         $this->cliente = $cliente;
     }
     public function getAllClientes()
-    {   
-        return ClientesResource::collection($this->cliente->getAllClientesJson());
+    {
+        return
+            response(
+                ClientesResource::collection($this->cliente->getAllClientes()),
+                200
+            );
     }
     public function store(ClienteRequest $request)
     {
         $this->cliente->storeCliente($request->validated());
-        return $this->getAllClientes();
-    }  
+        return
+            response(
+                "Cliente creado",
+                201
+            );
+    }
     public function update(ClienteRequest $request, int $id)
-    {  
-        $this->cliente->updateCliente($request->validated(),$id);
-        return $this->getAllClientes();;
+    {
+        $this->cliente->updateCliente($request->validated(), $id);
+        return
+            response(
+                "Cliente actualizado",
+                201
+            );
     }
     public function destroy(int $id)
     {
         $this->cliente->destroyCliente($id);
-        return $this->getAllClientes();;
+        return
+            response(
+                "Cliente eliminado",
+                204
+            );
     }
 }
