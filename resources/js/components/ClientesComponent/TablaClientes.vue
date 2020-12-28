@@ -33,7 +33,7 @@
       </template>
       <!------------------------------------->
       <template v-slot:cell(acciones)="data">
-        <slot name="acciones" :data_row="data">
+        <slot name="acciones" :data_row="data"><!-- Importante este slot -->
           <div class="d-flex">
             <EditarCliente :prop_cliente="data" />
             <div>

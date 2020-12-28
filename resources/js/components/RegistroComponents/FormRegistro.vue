@@ -91,10 +91,10 @@
         <!---------------------------------------------->
         <!-- Botton de accion -->
         <b-col cols="12" class="mb-3">
-          <slot></slot>
+          <slot></slot><!-- Importante este slot -->
         </b-col>
         <!---------------------------------------------->
-        <!-- Tabla CLientes con botton addClient -->
+        <!-- Tabla Clientes con botton addClient -->
         <b-col cols="12">
           <TablaClientes :perpage="10">
             <template #acciones="{ data_row: { item: cliente } }">

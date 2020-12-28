@@ -11,8 +11,8 @@ $factory->define(
         return [
             'n_mesa' => $faker->numberBetween($min = 1, $max = 15),
             'fecha' => $faker->dateTimeBetween(
-                $startDate = '2020/12/04 00:00:00',
-                $endDate = '2020/12/08 00:00:00'
+                $startDate = '2020/12/26 00:00:00',
+                $endDate = '2020/12/31 00:00:00'
             )
         ];
     }
